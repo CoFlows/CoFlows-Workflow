@@ -1,0 +1,3 @@
+# CoFlows Hello World
+
+CoFlows is a collaborative platform that integrates some of the greatest open-source technologies delivering a simple yet powerful workflow to build, deploy and run reactive applications. In a fully managed service, CoFlows leverages-off GitHub, Docker, Kubernetes and the QuantApp Engine to deliver an easy to use CI/CD workflow that deploys rich and reactive applications through A/Q Models (Agent / Query Models). The use of these technologies allows solutions built on this stack to be liquid in terms of easy to move between cloud providers. This mitigates the risk of needing to invest more when migrating solutions between cloud providers and also mitigates the risk of vendor lock-in when using proprietary solutions.

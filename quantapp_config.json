@@ -1,0 +1,18 @@
+{
+    "Database": "mnt/database.db",
+    "Workspace": "mnt/package.json",
+    "Jupyter": false,
+    "Server":{
+        "Host": "localhost",
+        "SecretKey": "26499e5e555e9957725f51cc4d400384",
+        "LetsEncrypt":{
+            "Email": "",
+            "Staging": false
+        }
+    },
+    "Cloud":{
+        "Host": "coflows.quant.app",
+        "SecretKey": "xxx",
+        "SSL": true
+    }
+}
