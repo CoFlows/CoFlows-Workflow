@@ -11,7 +11,7 @@ class ScalaQuery {
     // C# Interop
     def Cs = {
 
-        val csbase = CLR("csBase.csBase")
+        val csbase = CLR("Cs.Base.csBase")
         
         val age_in_5_years = csbase.Add[Integer](csbase.getAge[Double].asInstanceOf[Int], 5)
         var result = "Cs " + csbase.getName[String] + " will be " + age_in_5_years + " in 5 years and is interested in: \n"
@@ -36,7 +36,7 @@ class ScalaQuery {
     // Python Interop
     def Python = 
         CLRRuntime.Python(_ => {
-            val pybase = CLR.PyImport("pybase").pybase[CLR]()
+            val pybase = CLR.PyImport("Base.pyBase.pybase").pybase[CLR]()
             
             val age_in_5_years = pybase.Add[Int](pybase.getAge[Float].asInstanceOf[Int], 5)
             var result = "Python " + pybase.getName[String] + " will be " + age_in_5_years + " in 5 years and is interested in: \n"

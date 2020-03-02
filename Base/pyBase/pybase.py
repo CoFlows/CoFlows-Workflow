@@ -1,4 +1,3 @@
-#py-pybase
 class pybase:
     getName = "something"
 

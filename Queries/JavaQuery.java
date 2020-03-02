@@ -18,7 +18,7 @@ class JavaQuery
     // C# Interop
     public static String Cs()
     {
-        CLRObject csbase = CLRRuntime.CreateInstance("csBase.csBase");
+        CLRObject csbase = CLRRuntime.CreateInstance("Cs.Base.csBase");
 
         Double age = (Double)csbase.GetProperty("getAge");
         String name = (String)csbase.GetProperty("getName");
@@ -39,7 +39,7 @@ class JavaQuery
     {
         return CLRRuntime.Python((x) -> {
             
-            CLRObject pymod = CLRRuntime.PyImport("pybase");
+            CLRObject pymod = CLRRuntime.PyImport("Base.pyBase.pybase");
             CLRObject pybase = (CLRObject)pymod.Invoke("pybase");
             
             Float age = (Float)pybase.GetProperty("getAge");

@@ -2,6 +2,7 @@
 
 jars/
 pip/
+nugets/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -60,3 +61,5 @@ venv.bak/
 
 # Vim
 *.swp
+
+*.db

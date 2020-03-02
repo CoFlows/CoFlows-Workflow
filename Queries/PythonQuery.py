@@ -5,11 +5,11 @@ def Add(x, y):
     return x + y
 
 # C# Interop
-import clr
-import csBase
+# import clr
+import Cs.Base as csb
 
 def Cs():
-    csbase = csBase.csBase()
+    csbase = csb.csBase()
     
     age_in_5_years = csbase.Add(csbase.getAge, 5)
     result = "C# " + str(csbase.getName) + " will be " + str(age_in_5_years) + " in 5 years and is interested in:"

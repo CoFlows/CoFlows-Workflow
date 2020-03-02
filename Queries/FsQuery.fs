@@ -11,7 +11,7 @@ module FsQuery
     //Python Interop
     let Python() =
         using (Py.GIL()) ( fun _ ->
-            let pymodule = Py.Import("pybase")
+            let pymodule = Py.Import("Base.pyBase.pybase")
             let pybase = pymodule?pybase()            
             let age = pybase?getAge |> Py.T<double>  //important step to define type of getAge()
             let age_in_5_years = pybase?Add(age, 5) |> Py.T<int>

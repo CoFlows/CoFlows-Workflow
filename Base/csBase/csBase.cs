@@ -1,5 +1,5 @@
 //cs
-namespace csBase
+namespace Cs.Base
 {
     using System.Collections.Generic;
 

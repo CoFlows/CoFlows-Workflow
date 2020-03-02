@@ -3,20 +3,20 @@
   "Name": "DocSamples",
   "Base": [
     {
-      "Name": "csBase.cs",
+      "Name": "csBase/csBase.cs",
       "Content": "Base/csBase/csBase.cs"
     },
     {
-      "Name": "fsBase.fs",
-      "Content": "Base/fsBase.fs"
+      "Name": "fsBase/fsBase.fs",
+      "Content": "Base/fsBase/fsBase.fs"
     },
     {
-      "Name": "Base/pybase.py",
-      "Content": "Base/pybase.py"
+      "Name": "Base/pyBase/pybase.py",
+      "Content": "Base/pyBase/pybase.py"
     },
     {
-      "Name": "vbBase.vb",
-      "Content": "Base/vbBase.vb"
+      "Name": "vbBase/vbBase.vb",
+      "Content": "Base/vbBase/vbBase.vb"
     },
     {
       "Name": "javabase/javaBase.java",
@@ -61,10 +61,6 @@
     {
       "Name": "dash_financial_report/.DS_Store",
       "Content": "Base/dash_financial_report/.DS_Store"
-    },
-    {
-      "Name": "dash_financial_report/.gitignore",
-      "Content": "Base/dash_financial_report/.gitignore"
     }
   ],
   "Agents": [

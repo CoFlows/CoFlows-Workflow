@@ -32,7 +32,7 @@ public class CsQuery
     {
         using(Py.GIL())
         {
-            dynamic pymodule = Py.Import("Base.pybase");
+            dynamic pymodule = Py.Import("Base.pyBase.pybase");
             dynamic pybase = pymodule.pybase();
             var age_in_5_years = pybase.Add((int)pybase.getAge, 5);
 
