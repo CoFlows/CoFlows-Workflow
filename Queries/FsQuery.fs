@@ -8,6 +8,15 @@ module FsQuery
     let getName = "something"
     let Add x y = x + y
 
+    //Permission
+    let Permission() =
+        let permission = QuantApp.Kernel.Group.FindGroup("06e1da00-4c81-4a35-914b-81c548b07345").PermissionContext()
+        match permission with
+        | QuantApp.Kernel.AccessType.Write -> "WRITE"
+        | QuantApp.Kernel.AccessType.Read -> "READ"
+        | QuantApp.Kernel.AccessType.View -> "VIEW"
+        | _ -> "DENIED"
+
     //Python Interop
     let Python() =
         using (Py.GIL()) ( fun _ ->

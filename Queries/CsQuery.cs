@@ -12,6 +12,23 @@ public class CsQuery
     {
         return x + y;
     }
+    
+    //Permissions
+    public static string Permission()
+    {
+        var permission = QuantApp.Kernel.Group.FindGroup("06e1da00-4c81-4a35-914b-81c548b07345").PermissionContext();
+        switch(permission)
+        {
+            case QuantApp.Kernel.AccessType.Write:
+                return "WRITE";
+            case QuantApp.Kernel.AccessType.Read:
+                return "READ";
+            case QuantApp.Kernel.AccessType.View:
+                return "VIEW";
+            default:
+                return "DENIED";
+        }
+    }
 
     //F# Interop
     public static string Fs()

@@ -4,8 +4,10 @@ def getName():
 def Add(x, y):
     return x + y
 
+
+
+
 # C# Interop
-# import clr
 import Cs.Base as csb
 
 def Cs():
@@ -20,6 +22,19 @@ def Cs():
 
 
 import QuantApp.Kernel as qak
+
+# Permission
+def Permission():
+    qgroup = qak.Group.FindGroup("06e1da00-4c81-4a35-914b-81c548b07345")
+    permission = qgroup.PermissionContext()
+    if permission == qak.AccessType.Write:
+        return "WRITE"
+    elif permission == qak.AccessType.Read:
+        return "READ"
+    elif permission == qak.AccessType.View:
+        return "VIEW"
+    else:
+        return "DENIED"
 
 # Java Interop
 def Java():

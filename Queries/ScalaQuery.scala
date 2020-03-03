@@ -7,6 +7,21 @@ import collection.JavaConverters._
 class ScalaQuery {
     def getName = "something"
     def Add(x:Int, y:Int) = x + y
+
+    // Permission
+    def Permission = {
+    
+        val groupClass = CLR("QuantApp.Kernel.Group")
+        val group = groupClass.FindGroup[CLR]("06e1da00-4c81-4a35-914b-81c548b07345")
+        val permission = group.PermissionContext[Int]()
+        
+        permission match {        
+            case 2 => "WRITE"
+            case 1 => "READ"
+            case 0 => "VIEW"
+            case _ => "DENIED"
+        }
+    }
      
     // C# Interop
     def Cs = {

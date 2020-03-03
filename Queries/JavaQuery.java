@@ -14,6 +14,26 @@ class JavaQuery
     {
         return x + y;
     }
+
+    // Permission
+    public static String Permission()
+    {
+        CLRObject groupClass = CLRRuntime.GetClass("QuantApp.Kernel.Group");
+        CLRObject group = (CLRObject)groupClass.Invoke("FindGroup", "06e1da00-4c81-4a35-914b-81c548b07345");
+        int permission = (int)group.Invoke("PermissionContext");
+        
+        switch(permission)
+        {
+            case 2:
+                return "WRITE";
+            case 1:
+                return "READ";
+            case 0:
+                return "VIEW";
+            default:
+                return "DENIED";
+        }
+    }
     
     // C# Interop
     public static String Cs()
