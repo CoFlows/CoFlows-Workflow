@@ -70,6 +70,13 @@ All workspaces are defined by a json file that specifies all of the source code 
 **CoFlows** allows you to run a Jupyter Lab instances within the container. This allows you to both create notebooks and access the internal terminal. If this value is "true" then the Lab is started otherwise not.
 
 ### Server
+This section defines the behavior of the runtime server. _Host_ specifies the name of the host container. In this example the container runs as a localhost. 
+
+The SecreKey is used by Jupyter Labs so this key should be changed. More to come about this soon.
+
+When facing the public internet, SSL is a necessity. We use LetsEncrypt to automatically and freely issue SSL Certificates. This is configured by setting an email and defining a host name different to "localhost". If either the host is localhost or the email is an empty string then the SSL certificate will not be issued and the host will only be accessible through "http". The example below shows a version where LetsEncrypt is active.
+
+The staging flag in the LetsEncrypt block follows the standard LetsEncrypt functionality. If the setting is false, an actual SSL certificate is issued, otherwise a dummy certificate is created. Please read the LetsEncrypt documentation [here](https://letsencrypt.org/docs/).
 
         "Server":{
             "Host": "localhost", //Set the host name
@@ -80,9 +87,39 @@ All workspaces are defined by a json file that specifies all of the source code 
             }
         },
 
+Below is an example of a **CoFlows** container facing the internet with SSL. This server is only accessible through "https://app.coflows.com". Please note that the app.coflows.com domain must point to the IP address of this container. To achieve this you must own the domain and configure its DNS.
+
+        "Server":{
+            "Host": "app.coflows.com", //Set the host name
+            "SecretKey": "26499e5e555e9957725f51cc4d400384", //User key used for Jypter Labs - No need to change
+            "LetsEncrypt":{
+                "Email": "john@doe.com",
+                "Staging": false
+            }
+        },
+
 ### Cloud
+**CoFlows** is a distributed system that allows users to execute commands through a CLI (terminal) on a local computer that run code on a hosted container. For example, if you host a workspace on an Azure Container Instance, you can execute code on that container through the CLI on your localhost. More examples of this below. 
+
+        "Cloud":{
+            "Host": "app.coflows.com", //Set the cloud host name
+            "SecretKey": "xxx", //Set your cloud secret key (login to CoFlows Cloud, then at the top right click on your name, profile and your secret key will appear)
+            "SSL": true
+        }
 
 ### AzureContainerInstance
+
+        "AzureContainerInstance": {
+            "AuthFile":"mnt/Files/my.azureauth",
+            "Dns": "coflows-container",
+            "Region": "UKSouth",
+            "Cores": 4,
+            "Mem": 4,
+            "Gpu": {
+                "SKU": "", // Empty = no GPU or K80, P100, V100
+                "Cores": 1 // 1, 2 or 4 
+            }
+        }
 
 GPU source https://docs.microsoft.com/en-us/azure/container-instances/container-instances-gpu
 
