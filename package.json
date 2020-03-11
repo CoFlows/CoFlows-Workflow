@@ -176,10 +176,10 @@
   ],
   "Jars": [
     {
-      "Url": "http://central.maven.org/maven2/org/json/json/20180813/json-20180813.jar"
+      "Url": "https://repo1.maven.org/maven2/org/json/json/20180813/json-20180813.jar"
     },
     {
-      "Url": "http://central.maven.org/maven2/com/google/code/gson/gson/2.8.5/gson-2.8.5.jar"
+      "Url": "https://repo1.maven.org/maven2/com/google/code/gson/gson/2.8.5/gson-2.8.5.jar"
     }
   ],
   "Bins": [],
