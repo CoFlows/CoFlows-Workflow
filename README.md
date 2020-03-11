@@ -1,6 +1,8 @@
-# CoFlows Documentation Samples
+# CoFlows Workspace
 
-**CoFlows CE (Community Edition)** is a polyglot runtime that simplifies the development, hosting and deployment of powerful data-centric workflows. **CoFlows** enables developers to create rich **Web-APIs** with almost **zero boiler plate** and scheduled / reactive processes through a range of languages including CoreCLR (C#, F# and VB), JVM (Java and Scala), Python and Javascript. Furthermore, functions written in any of these languages can call each other within the same process with **full interop**.
+This repo is a sample showing to structure and create a [**CoFlows**](https://github.com/QuantApp/CoFlows-CE) workspace. Projects in CoFlows are called Workspaces. They contain the logic that defines the Web APIs and scheduled / reactive processes together with the definition of the entire environment including Nuget, Jar and Pip packages that the Workspace depends on.
+
+[**CoFlows CE (Community Edition)**](https://github.com/QuantApp/CoFlows-CE) is a polyglot runtime that simplifies the development, hosting and deployment of powerful data-centric workflows. **CoFlows** enables developers to create rich **Web-APIs** with almost **zero boiler plate** and scheduled / reactive processes through a range of languages including CoreCLR (C#, F# and VB), JVM (Java and Scala), Python and Javascript. Furthermore, functions written in any of these languages can call each other within the same process with **full interop**.
 
 
 A number of APIs are available for developers to use but a notable one is the **M** set which is a **NoSQL persistent and distributed list** in the **QuantApp.Kernel** environment. For more information please see [M](Files/docs/M.md "M").
@@ -10,7 +12,7 @@ Install the docker cli tools for Linux containers. Pull the docker public coflow
 
     docker pull coflows/ce
 
-Download a **CoFlows** package from a [sample repo from GitHub](https://github.com/QuantApp/CoFlows-DocSamples) or create your own package. If you create your own package from scratch please read [Workspace](Files/docs/Workspace.md "Workspace"). Ensure a file called _quantapp_config.json_ exists in the folder you are running **CoFlows** in.
+Download this [**CoFlows**](https://github.com/QuantApp/CoFlows-CE) workspace or create your own package. If you create your own package from scratch please read [Workspace](Files/docs/Workspace.md "Workspace"). Ensure a file called _quantapp_config.json_ exists in the folder you are running [**CoFlows**](https://github.com/QuantApp/CoFlows-CE) in.
 
     quantapp_config.json
     {
