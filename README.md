@@ -12,7 +12,7 @@ Install the docker cli tools for Linux containers. Pull the docker public coflow
 
     docker pull coflows/ce
 
-Download this [**CoFlows**](https://github.com/QuantApp/CoFlows-CE) workspace or create your own package. If you create your own package from scratch please read [Workspace](Files/docs/Workspace.md "Workspace"). Ensure a file called _quantapp_config.json_ exists in the folder you are running [**CoFlows**](https://github.com/QuantApp/CoFlows-CE) in.
+Clone this [**CoFlows**](https://github.com/QuantApp/CoFlows-CE) workspace or create your own package. If you create your own package from scratch please read [Workspace](Files/docs/Workspace.md "Workspace"). Ensure a file called _quantapp_config.json_ exists in the folder you are running [**CoFlows**](https://github.com/QuantApp/CoFlows-CE) in.
 
     quantapp_config.json
     {
@@ -47,6 +47,42 @@ Download this [**CoFlows**](https://github.com/QuantApp/CoFlows-CE) workspace or
             }
         }
     }
+
+### Database
+
+Store user, group permissions and M Set in to the local file system using a SQLite database. Please note that if you are deploying **CoFlows** to an Azure Container Instance, this file will be deleted on each restart so please use the MS SQL Server alternative below.
+
+        "Database": { 
+            "Connection": "mnt/database.db" ,
+            "Type": "sqlite"
+        },
+For more scalable persistence, a MS SQL Server connection is available. Below is an example of a connection to an Azure SQL Server.
+
+        "Database": { 
+            "Connection": "Server={{SERVER_NAME}}.database.windows.net,1433;Database={{DATABASE_NAME}};User ID={{USERNAME}};Password={{PASSWORD}};MultipleActiveResultSets=True;Packet Size=32768" ,
+            "Type": "mssql"
+        },
+
+### Workspace
+All workspaces are defined by a json file that specifies all of the source code and dependencies of the project. Please read [Workspace](Files/docs/Workspace.md "Workspace").
+
+### Jupyter
+**CoFlows** allows you to run a Jupyter Lab instances within the container. This allows you to both create notebooks and access the internal terminal. If this value is "true" then the Lab is started otherwise not.
+
+### Server
+
+        "Server":{
+            "Host": "localhost", //Set the host name
+            "SecretKey": "26499e5e555e9957725f51cc4d400384", //User key used for Jypter Labs - No need to change
+            "LetsEncrypt":{
+                "Email": "",
+                "Staging": false
+            }
+        },
+
+### Cloud
+
+### AzureContainerInstance
 
 GPU source https://docs.microsoft.com/en-us/azure/container-instances/container-instances-gpu
 
