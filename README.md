@@ -1,6 +1,6 @@
 # CoFlows Workspace
 
-This repo is a sample showing to structure and create a [**CoFlows**](https://github.com/QuantApp/CoFlows-CE) workspace. Projects in CoFlows are called Workspaces. They contain the logic that defines the Web APIs and scheduled / reactive processes together with the definition of the entire environment including Nuget, Jar and Pip packages that the Workspace depends on.
+This repo is a sample showing how to structure and create a [**CoFlows**](https://github.com/QuantApp/CoFlows-CE) workspace. Projects in CoFlows are called Workspaces. They contain the logic that defines the Web APIs and scheduled / reactive processes together with the definition of the entire environment including Nuget, Jar and Pip packages that the Workspace depends on.
 
 [**CoFlows CE (Community Edition)**](https://github.com/QuantApp/CoFlows-CE) is a polyglot runtime that simplifies the development, hosting and deployment of powerful data-centric workflows. **CoFlows** enables developers to create rich **Web-APIs** with almost **zero boiler plate** and scheduled / reactive processes through a range of languages including CoreCLR (C#, F# and VB), JVM (Java and Scala), Python and Javascript. Furthermore, functions written in any of these languages can call each other within the same process with **full interop**.
 
