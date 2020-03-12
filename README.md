@@ -229,75 +229,55 @@ For more up to date information please visit [Azure GPUs]("https://docs.microsof
 
 
 ## Running Locally and the CoFlows CLI (Command Line Interface)
+We have designed a CLI in order to interact with **CoFlows** through the terminal. This CLI offers almost full control over the commands within **CoFlows** to a developer to:
+* Test code
+* Run a local version of the container / server
+* Deploy containers to Azure Container Instances
+* Query code on remote **CoFlows** container.
 
+### Running
+First, to run the a local version of the server you can execute the following scripts
+        unix: bin/server.sh
+        win: bin/bat/server.bat
 
-        Cloud:
+In some instances you may want to create a custom version of the quantapp_config.json setup. For example you may want to test connections of the same code to various databases. To this end you can type: 
+        unix: bin/server.sh custom_quantapp_config.json
+        win: bin/bat/server.bat custom_quantapp_config.json
+            
 
-            -Deploy a container to the cloud
-                unix: bin/cloud_deploy.sh cloud
-                win:  bin/bat/cloud_deploy.bat cloud
-
-            -Buid the in the cloud
-                unix: bin/build.sh cloud
-                win:  bin/bat/build.bat cloud
-
-            -Print logs of container in the cloud
-                unix: bin/cloud_log.sh
-                win: bin/bat/cloud_log.bat
-
-            -Restart container in the cloud
-                unix: bin/cloud_restart.sh
-                win: bin/bat/cloud_restart.bat
-
-            -Remove container in the cloud
-                unix: bin/cloud_remove.sh
-                win: bin/bat/cloud_remove.bat
-
-            -Execute query in the cloud
-                unix: bin/query.sh local query_id function_name  parameters[0] ... parameters[n]
-                win:  bin/bat/query.bat local query_id function_name  parameters[0] ... parameters[n]
-
-            -Execute query locally (custom quantapp_config.json file)
-                unix: bin/query_customg.sh {custom_quantapp_config.json} cloud query_id function_name  parameters[0] ... parameters[n]
-                win:  bin/bat/query_custom.bat {custom_quantapp_config.json} cloud query_id function_name  parameters[0] ... parameters[n]
+### Building
+Workspace can be built (compiled and referenced) either locally or on a remote server. The remote server is defined in the *Cloud* entry in the *quantapp_config.json* file. A local build, as the name specifies means that the workspace is built locally on your machine. In contrast, a cloud build means the Workspace source code is sent to the cloud server, and the cloud server builds the code remotely.
 
         Local:
+            unix: bin/build.sh local
+            win:  bin/bat/build.bat local
 
-            -Buid the code locally
-                unix: bin/build.sh local
-                win:  bin/bat/build.bat local
+        Cloud:
+            unix: bin/build.sh cloud
+            win:  bin/bat/build.bat cloud
 
-            -Execute query locally
-                unix: bin/query.sh local query_id function_name  parameters[0] ... parameters[n]
-                win:  bin/bat/query.bat local query_id function_name  parameters[0] ... parameters[n]
+### Executing Queries
+Developers can execute queries without the need to either start a local server or redeploy a remote server. This possibility is a quick option while developing code.
 
-            -Execute query locally (custom quantapp_config.json file)
-                unix: bin/query_customg.sh {custom_quantapp_config.json} local query_id function_name  parameters[0] ... parameters[n]
-                win:  bin/bat/query_custom.bat {custom_quantapp_config.json} local query_id function_name  parameters[0] ... parameters[n]
+        Local:
+            unix: bin/query.sh local query_id function_name  parameters[0] ... parameters[n]
+            win:  bin/bat/query.bat local query_id function_name  parameters[0] ... parameters[n]
 
+        Cloud:
+            unix: bin/query.sh cloud query_id function_name  parameters[0] ... parameters[n]
+            win:  bin/bat/query.bat cloud query_id function_name  parameters[0] ... parameters[n]
 
-            -Server
-                unix: bin/server.sh
-                win: bin/bat/server.bat
+If you want to use a custom setup defined by another version of the quantapp_config.json you can do the following:
 
-        Azure Container Instances:
+        unix: bin/query_customg.sh {custom_quantapp_config.json} local query_id function_name  parameters[0] ... parameters[n]
+        win:  bin/bat/query_custom.bat {custom_quantapp_config.json} local query_id function_name  parameters[0] ... parameters[n]
 
-            -Deploy to an Azure Container Instance
-                unix: bin/azure_deploy.sh local
-                win:  bin/bat/azure_deploy.bat local
+Deploying to an Azure Container Instances is achieved through (after you have created the auth config file):
 
-            -Remove an Azure Container Instance
-                unix: bin/azure_remove.sh
-                win:  bin/bat/azure_remove.bat
+        Deploy to an Azure Container Instance
+            unix: bin/azure_deploy.sh local
+            win:  bin/bat/azure_deploy.bat local
 
-
-To run the local server you first need a workspace. Either create your own or download a template. Then just execute the server.sh script of your workspace's _bin_ folder or type:  
-
-    sh server.sh
-
-go to http://localhost and login with:  
-
-    Username: root
-    Password: 123
-
-
+        Remove an Azure Container Instance
+            unix: bin/azure_remove.sh
+            win:  bin/bat/azure_remove.bat
