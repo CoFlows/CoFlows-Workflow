@@ -1,11 +1,57 @@
 # CoFlows Workspace
 
-This repo is a sample showing how to structure and create a [**CoFlows**](https://github.com/QuantApp/CoFlows-CE) workspace. Projects in CoFlows are called Workspaces. They contain the logic that defines the Web APIs and scheduled / reactive processes together with the definition of the entire environment including Nuget, Jar and Pip packages that the Workspace depends on.
+In **CoFlows** a project is called a Workspace. Developers declare the entire environment through two files called **package.json** and **quantapp_config.json** where they define both the project and it's executing containers together with the required resources.
 
 [**CoFlows CE (Community Edition)**](https://github.com/QuantApp/CoFlows-CE) is a polyglot runtime that simplifies the development, hosting and deployment of powerful data-centric workflows. **CoFlows** enables developers to create rich **Web-APIs** with almost **zero boiler plate** and scheduled / reactive processes through a range of languages including CoreCLR (C#, F# and VB), JVM (Java and Scala), Python and Javascript. Furthermore, functions written in any of these languages can call each other within the same process with **full interop**.
 
+The logic in Workspaces is assigned to three different types.
+1. Base which are general libraries called through out the system
+2. [Agents](Files/docs/Agents/General.md "Agents") which are designed to react to either changes to an [M](../M.md "M Set") topic, or to scheduled events according to developer defined **cron jobs** within **CoFlows**.
+3. [Queries](Files/docs/Queries/General.md "Queries") where developers can define Web API entry points to the Workspaces through Queries. Every function defined in a query is automatically assigned a _url_ by the **CoFlows** simplifying the process of creating these endpoints.
 
-A number of APIs are available for developers to use but a notable one is the **M** set which is a **NoSQL persistent and distributed list** in the **QuantApp.Kernel** environment. For more information please see [M](Files/docs/M.md "M").
+Every workspace depends on a set of sections (this is all reflected in the **package.json** file):
+* **Base** code containing libraries used across the entire project
+* [Agents](Files/docs/Agents/General.md "Agents") code describing functions that are called either on a scheduled basis or that react to various external triggers. Agents can pull data from a website or check for updates in a database to give a few examples
+* [Queries](Files/docs/Queries/General.md "Queries") code defining functions that are automatically assigned URLs for WebAPI access from external systems.
+* **Resources** settings to specify CPU / Memory requests and limits in a Kubernetes format.
+* **Pips** Pip dependencies of your python code
+* **NuGets** NuGet dependencies of your C#, F# and VB code
+* **Jars** Jar dependencies of you Java and Scala code that are remotely hosted and referenced in a URL format.
+* **Bins** Dlls or Jar files needed by your project that you provide. These are usually used for custom Dlls or Jars that are not in Maven or NuGet. 
+* **Files** Generic files relevant for to the project. **Jupyter** Notebooks are a good example.
+
+## Languages
+The QuantApp Engine enables a polyglot environment where developers can code their functions in a variety of languages while allowing all languages to co-exist in the same process in memory. This mitigates the need for a TCP (SOAP, JSON WebAPI, Py4J) overhead which is usual when functions from different languages interact.
+
+Within a **CoFlows** workspace, three computing environments interact within the same process including the **Core CLR** (DotNet Core Language Runtime), **JVM** (Java Virtual Machine) and the **Python interpreter**. Javascript is interpreted within the CLR using the Jint package. 
+Note: The CLR is the main execution environment which calls the JVM and and Python interpreter.
+
+The full list is:
+* CoreCLR: C#, F# & VB
+* JVM: Java & Scala
+* Python
+* Javascript
+
+## Polyglot <-> Interoperability
+The interop functionality in **CoFlows** is achieved through a open-source projects. **CoreCLR** is the main execution environment that loads both the JVM and Python environments and also interprets Javascript. The Python environment is loaded through a fork of the **PythonNet** library while the JVM is loaded through the **QuantApp.Kernel/JVM** libraries. Please note that the **PythonNet** fork was incorporated into the **QuantApp.Kernel/Python** package for additional integration. For further details please read [Polyglot](Polyglot/General.md "Polyglot")
+
+## Deployment
+Deploying a project through **CoFlows** can be done through **GitHub** straight into an executing container. 
+
+Once a project has been committed to a **GitHub** repo (or straight into **CoFlows** through the **CoFlows** CLI), **CoFlows** creates a Container with the specified resource requirements. The code is then built and deployed within the container and access to the container is opened through the main CoFlows services managing security and orchestration. Developers can access the container through a variety of ways:
+* **WebAPI** access to the Queries
+* **CoFlows** UI where live updates to Agents and Queries can be done without the need to restart the container.
+* **Jupyter Lab** which in turn offers access to both Notebooks, the Python Console and Terminal within the executing container.  
+  Terminal Note: If you run a few experiments in a notebook and want to commit the notebook changes you can use the Terminal. Either commit the changes straight into **CoFlows** through  
+  `Bash> coflows commit`  
+  or use the standard git cli to commit to **GitHub**  
+
+This repo is an example showing how to structure and create a [**CoFlows**](https://github.com/QuantApp/CoFlows-CE) workspace. Projects in CoFlows are called Workspaces. They contain the logic that defines the Web APIs and scheduled / reactive processes together with the definition of the entire environment including Nuget, Jar and Pip packages that the Workspace depends on.
+
+
+
+
+Although a number of APIs are available for developers, the most notable one is the **M** set which is a **NoSQL persistent and distributed list** in the **QuantApp.Kernel** environment. For more information please see [M](Files/docs/M.md "M").
 
 ## Setup  
 Install the docker cli tools for Linux containers. Pull the docker public coflows/ce image.
