@@ -30,7 +30,7 @@ public class CsQuery
         }
     }
 
-    //F# Interop
+    // F# Interop
     public static string Fs()
     {
         var fsbase = new Fs.Base.FsBase();

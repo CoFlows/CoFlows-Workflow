@@ -17,6 +17,19 @@ module FsQuery
         | QuantApp.Kernel.AccessType.View -> "VIEW"
         | _ -> "DENIED"
 
+    // C# Interop
+    let Cs() =
+    
+        let csbase = Cs.Base.csBase()
+        let age = csbase.getAge
+        let age_in_5_years = csbase.Add(csbase.getAge |> int, 5)
+        
+        let result = "C# " + csbase.getName.ToString() + " will be " + age_in_5_years.ToString() + " in 5 years and is interested in: \n"
+
+        let result =  csbase.getInterests |> Seq.fold(fun acc x -> acc + x.ToString() + " \n") result
+
+        result
+
     //Python Interop
     let Python() =
         using (Py.GIL()) ( fun _ ->

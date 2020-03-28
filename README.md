@@ -233,7 +233,7 @@ We have designed a CLI in order to interact with **CoFlows** through the termina
 * Test code
 * Run a local version of the container / server
 * Deploy containers to Azure Container Instances
-* Query code on remote **CoFlows** container.
+* Query code on a remote **CoFlows** container.
 
 ### Running
 First, to run the a local version of the server you can execute the following scripts
@@ -243,7 +243,7 @@ First, to run the a local version of the server you can execute the following sc
 In some instances you may want to create a custom version of the quantapp_config.json setup. For example you may want to test connections of the same code to various databases. To this end you can type: 
         unix: bin/server.sh custom_quantapp_config.json
         win: bin/bat/server.bat custom_quantapp_config.json
-            
+
 
 ### Building
 Workspace can be built (compiled and referenced) either locally or on a remote server. The remote server is defined in the *Cloud* entry in the *quantapp_config.json* file. A local build, as the name specifies means that the workspace is built locally on your machine. In contrast, a cloud build means the Workspace source code is sent to the cloud server, and the cloud server builds the code remotely.
