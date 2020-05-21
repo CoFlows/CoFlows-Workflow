@@ -11,15 +11,15 @@ class ScalaQuery {
     // Permission
     def Permission = {
     
-        val groupClass = CLR("QuantApp.Kernel.Group")
-        val group = groupClass.FindGroup[CLR]("06e1da00-4c81-4a35-914b-81c548b07345")
-        val permission = group.PermissionContext[Int]()
+        val userClass = CLR("QuantApp.Kernel.User")
+        val user = userClass.GetContextUser[CLR]()
+        val permission = userClass.PermissionContext[Int]("06e1da00-4c81-4a35-914b-81c548b07345")
         
         permission match {        
-            case 2 => "WRITE"
-            case 1 => "READ"
-            case 0 => "VIEW"
-            case _ => "DENIED"
+            case 2 => user.FirstName[String] + " WRITE"
+            case 1 => user.FirstName[String] + " READ"
+            case 0 => user.FirstName[String] + " VIEW"
+            case _ => user.FirstName[String] + " DENIED"
         }
     }
      

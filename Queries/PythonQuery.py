@@ -25,16 +25,16 @@ import QuantApp.Kernel as qak
 
 # Permission
 def Permission():
-    qgroup = qak.Group.FindGroup("06e1da00-4c81-4a35-914b-81c548b07345")
-    permission = qgroup.PermissionContext()
+    quser = qak.User.ContextUser
+    permission = qak.User.PermissionContext("06e1da00-4c81-4a35-914b-81c548b07345")
     if permission == qak.AccessType.Write:
-        return "WRITE"
+        return quser.FirstName + " WRITE"
     elif permission == qak.AccessType.Read:
-        return "READ"
+        return quser.FirstName + " READ"
     elif permission == qak.AccessType.View:
-        return "VIEW"
+        return quser.FirstName + " VIEW"
     else:
-        return "DENIED"
+        return quser.FirstName + " DENIED"
 
 # Java Interop
 def Java():

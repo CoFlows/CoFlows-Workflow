@@ -10,12 +10,13 @@ module FsQuery
 
     //Permission
     let Permission() =
-        let permission = QuantApp.Kernel.Group.FindGroup("06e1da00-4c81-4a35-914b-81c548b07345").PermissionContext()
+        let user = QuantApp.Kernel.User.ContextUser
+        let permission = QuantApp.Kernel.User.PermissionContext("06e1da00-4c81-4a35-914b-81c548b07345")
         match permission with
-        | QuantApp.Kernel.AccessType.Write -> "WRITE"
-        | QuantApp.Kernel.AccessType.Read -> "READ"
-        | QuantApp.Kernel.AccessType.View -> "VIEW"
-        | _ -> "DENIED"
+        | QuantApp.Kernel.AccessType.Write -> user.FirstName + " WRITE"
+        | QuantApp.Kernel.AccessType.Read -> user.FirstName + " READ"
+        | QuantApp.Kernel.AccessType.View -> user.FirstName + " VIEW"
+        | _ -> user.FirstName + " DENIED"
 
     // C# Interop
     let Cs() =

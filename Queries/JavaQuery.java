@@ -18,20 +18,20 @@ class JavaQuery
     // Permission
     public static String Permission()
     {
-        CLRObject groupClass = CLRRuntime.GetClass("QuantApp.Kernel.Group");
-        CLRObject group = (CLRObject)groupClass.Invoke("FindGroup", "06e1da00-4c81-4a35-914b-81c548b07345");
-        int permission = (int)group.Invoke("PermissionContext");
+        CLRObject userClass = CLRRuntime.GetClass("QuantApp.Kernel.User");
+        CLRObject user = (CLRObject)userClass.Invoke("GetContextUser");
+        int permission = (int)userClass.Invoke("PermissionContext", "06e1da00-4c81-4a35-914b-81c548b07345");
         
         switch(permission)
         {
             case 2:
-                return "WRITE";
+                return user.GetProperty("FirstName") + " WRITE";
             case 1:
-                return "READ";
+                return user.GetProperty("FirstName") + " READ";
             case 0:
-                return "VIEW";
+                return user.GetProperty("FirstName") + " VIEW";
             default:
-                return "DENIED";
+                return user.GetProperty("FirstName") + " DENIED";
         }
     }
     

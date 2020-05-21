@@ -13,7 +13,7 @@ class ScalaAgent {
 
         CLR("QuantApp.Engine.FPKG",
             workspaceID + "-ScalaAgent", //ID
-            workspaceID, //Workspace ID  
+            workspaceID, //Workflow ID  
             "Scala Agent", //Name
             "Scala Agent Sample", //Description
             null, //MID

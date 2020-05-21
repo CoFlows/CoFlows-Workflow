@@ -17,7 +17,7 @@ Note: The Scala <-> CoreCLR interop is achieved through [QuantApp.Kernel/JVM](ht
 
             CLR("QuantApp.Engine.FPKG",
                 defaultID, //ID
-                "Hello_World_WorkSpace", //Workspace ID  
+                "Hello_World_Workflow", //Workflow ID  
                 "Hello Scala Agent", //Name
                 "Hello Scala Analytics Agent Sample", //Description
                 "xxx-MID", //Scala Listener

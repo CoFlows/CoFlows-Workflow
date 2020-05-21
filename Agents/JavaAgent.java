@@ -20,7 +20,7 @@ class JavaAgent
 
         return CLRRuntime.CreateInstance("QuantApp.Engine.FPKG",
             workspaceID + "-JavaAgent", //ID
-            workspaceID, //Workspace ID  
+            workspaceID, //Workflow ID  
             "Java Agent", //Name
             "Java Agent Sample", //Description
             null, //MID

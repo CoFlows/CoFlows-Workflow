@@ -42,7 +42,7 @@ def run(port, path):
                __name__, 
                meta_tags=[{"name": "viewport", "content": "width=device-width"}], 
                url_base_pathname = path,
-               assets_folder='/App/mnt/Files/dash_yield_curve/assets'
+               assets_folder='/app/mnt/Files/dash_yield_curve/assets'
             )
 
             app.url_base_pathname = path

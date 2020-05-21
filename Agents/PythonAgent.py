@@ -27,7 +27,7 @@ def Job(timestamp, data):
 def pkg():
     return qae.FPKG(
     workspaceID + "-PythonAgent", #ID
-    workspaceID, #Workspace ID
+    workspaceID, #Workflow ID
     "Python Agent", #Name
     "Python Agent Sample", #Description
     None, #M ID Listener

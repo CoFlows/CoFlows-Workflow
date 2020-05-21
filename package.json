@@ -1,6 +1,6 @@
 {
   "ID": "06e1da00-4c81-4a35-914b-81c548b07345",
-  "Name": "Workspace",
+  "Name": "Workflow",
   "Base": [
     {
       "Name": "csBase/csBase.cs",
@@ -189,8 +189,32 @@
       "Content": "Files/.DS_Store"
     },
     {
+      "Name": "my.azureauth",
+      "Content": "Files/my.azureauth"
+    },
+    {
       "Name": "dash_financial_report/.DS_Store",
       "Content": "Files/dash_financial_report/.DS_Store"
+    },
+    {
+      "Name": "docs/.DS_Store",
+      "Content": "Files/docs/.DS_Store"
+    },
+    {
+      "Name": "docs/Source.md",
+      "Content": "Files/docs/Source.md"
+    },
+    {
+      "Name": "docs/Workspace.md",
+      "Content": "Files/docs/Workspace.md"
+    },
+    {
+      "Name": "docs/M.md",
+      "Content": "Files/docs/M.md"
+    },
+    {
+      "Name": "docs/GitLink.md",
+      "Content": "Files/docs/GitLink.md"
     },
     {
       "Name": "dash_financial_report/data/df_recent_returns.csv",
@@ -277,6 +301,114 @@
       "Content": "Files/dash_financial_report/assets/risk_reward.png"
     },
     {
+      "Name": "docs/images/gpu_max_cores.png",
+      "Content": "Files/docs/images/gpu_max_cores.png"
+    },
+    {
+      "Name": "docs/images/gpu_region_skus.png",
+      "Content": "Files/docs/images/gpu_region_skus.png"
+    },
+    {
+      "Name": "docs/Queries/Fs.md",
+      "Content": "Files/docs/Queries/Fs.md"
+    },
+    {
+      "Name": "docs/Queries/Python.md",
+      "Content": "Files/docs/Queries/Python.md"
+    },
+    {
+      "Name": "docs/Queries/Cs.md",
+      "Content": "Files/docs/Queries/Cs.md"
+    },
+    {
+      "Name": "docs/Queries/Scala.md",
+      "Content": "Files/docs/Queries/Scala.md"
+    },
+    {
+      "Name": "docs/Queries/General.md",
+      "Content": "Files/docs/Queries/General.md"
+    },
+    {
+      "Name": "docs/Queries/Javascript.md",
+      "Content": "Files/docs/Queries/Javascript.md"
+    },
+    {
+      "Name": "docs/Queries/Vb.md",
+      "Content": "Files/docs/Queries/Vb.md"
+    },
+    {
+      "Name": "docs/Queries/Java.md",
+      "Content": "Files/docs/Queries/Java.md"
+    },
+    {
+      "Name": "docs/Agents/Fs.md",
+      "Content": "Files/docs/Agents/Fs.md"
+    },
+    {
+      "Name": "docs/Agents/Python.md",
+      "Content": "Files/docs/Agents/Python.md"
+    },
+    {
+      "Name": "docs/Agents/Cs.md",
+      "Content": "Files/docs/Agents/Cs.md"
+    },
+    {
+      "Name": "docs/Agents/Scala.md",
+      "Content": "Files/docs/Agents/Scala.md"
+    },
+    {
+      "Name": "docs/Agents/General.md",
+      "Content": "Files/docs/Agents/General.md"
+    },
+    {
+      "Name": "docs/Agents/Javascript.md",
+      "Content": "Files/docs/Agents/Javascript.md"
+    },
+    {
+      "Name": "docs/Agents/Vb.md",
+      "Content": "Files/docs/Agents/Vb.md"
+    },
+    {
+      "Name": "docs/Agents/Java.md",
+      "Content": "Files/docs/Agents/Java.md"
+    },
+    {
+      "Name": "docs/Polyglot/Fs.md",
+      "Content": "Files/docs/Polyglot/Fs.md"
+    },
+    {
+      "Name": "docs/Polyglot/Python.md",
+      "Content": "Files/docs/Polyglot/Python.md"
+    },
+    {
+      "Name": "docs/Polyglot/Cs.md",
+      "Content": "Files/docs/Polyglot/Cs.md"
+    },
+    {
+      "Name": "docs/Polyglot/Scala.md",
+      "Content": "Files/docs/Polyglot/Scala.md"
+    },
+    {
+      "Name": "docs/Polyglot/General.md",
+      "Content": "Files/docs/Polyglot/General.md"
+    },
+    {
+      "Name": "docs/Polyglot/Javascript.md",
+      "Content": "Files/docs/Polyglot/Javascript.md"
+    },
+    {
+      "Name": "docs/Polyglot/Java.md",
+      "Content": "Files/docs/Polyglot/Java.md"
+    },
+    {
+      "Name": "docs/Cloud/CloudCompute.md",
+      "Content": "Files/docs/Cloud/CloudCompute.md"
+    },
+    {
+      "Name": "docs/Cloud/CloudQuery.md",
+      "Content": "Files/docs/Cloud/CloudQuery.md"
+    },
+    {
       "Name": "dash_yield_curve/data/yield_curve.csv",
       "Content": "Files/dash_yield_curve/data/yield_curve.csv"
     },
@@ -306,6 +438,7 @@
     "Limit": {
       "Cpu": "",
       "Mem": ""
-    }
+    },
+    "Volumes": null
   }
 }

@@ -3,8 +3,8 @@
         "Connection": "mnt/database.db" ,
         "Type": "sqlite"
     },
-    "Workspace": "mnt/package.json",
-    "Jupyter": false,
+    "Workflow": "mnt/package.json",
+    "Jupyter": true,
     "Server":{
         "Host": "localhost",
         "SecretKey": "26499e5e555e9957725f51cc4d400384",

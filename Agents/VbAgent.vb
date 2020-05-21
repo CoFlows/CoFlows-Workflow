@@ -27,7 +27,7 @@ Public Class VbAgent
     public Shared Function pkg() As FPKG
         Return new FPKG(
             workspaceID + "-VbAgent", 'ID
-            workspaceID, 'Workspace ID
+            workspaceID, 'Workflow ID
             "VB Agent", 'Name
             "VB Analytics Agent Sample", 'Description
             Nothing, 'MID

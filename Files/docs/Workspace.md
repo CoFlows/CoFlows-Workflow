@@ -1,6 +1,6 @@
-Workspaces
+Workflows
 ===
-In **CoFlows** a project is called a Workspace. Developers declare the entire environment through a **package.json** file where they define both the project and it's executing containers together with the required resources.
+In **CoFlows** a project is called a Workflow. Developers declare the entire environment through a **package.json** file where they define both the project and it's executing containers together with the required resources.
 
 Every workspace depends on a set of sections:
 * **Base** code containing libraries used across the entire project
@@ -42,7 +42,7 @@ Once a project has been committed to a **GitHub** repo (or straight into **CoFlo
 
 ## Definition
 
-Workspaces are declared through a package.json file like:
+Workflows are declared through a package.json file like:
 
     {
         "ID": GUID,

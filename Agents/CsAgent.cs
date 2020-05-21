@@ -10,7 +10,7 @@ public class CsAgent
     {
         return new FPKG(
             workspaceID + "-CsAgent", //ID 1
-            workspaceID, //Workspace ID  
+            workspaceID, //Workflow ID  
             "C# Agent", //Name
             "C# Agent Sample", //Description
             null, //MID

@@ -4,7 +4,7 @@ let workspaceID = '$WID$'
 
 let pkg = new qengine.FPKG(
     workspaceID + '-JavascriptAgent', //ID
-    workspaceID, //Workspace ID
+    workspaceID, //Workflow ID
     'Javascript Agent', //Name
     'Javascript Agent Sample', //Description
     null, //MID

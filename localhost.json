@@ -3,7 +3,7 @@
         "Connection": "mnt/database.db" ,
         "Type": "sqlite"
     },
-    "Workspace": "mnt/package.json",
+    "Workflow": "mnt/package.json",
     "Jupyter": false,
     "Server":{
         "Host": "localhost",

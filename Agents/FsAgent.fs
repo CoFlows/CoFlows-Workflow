@@ -9,7 +9,7 @@ let workspaceID = "$WID$"
 let pkg(): FPKG =
     {
         ID = workspaceID + "-FsAgent" |> Some
-        WorkspaceID = workspaceID |> Some
+        WorkflowID = workspaceID |> Some
         Code = None
         Name = "F# Agent"
         Description = "F# Agent Sample" |> Some

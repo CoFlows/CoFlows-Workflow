@@ -1,13 +1,13 @@
-# CoFlows Workspace
+# CoFlows Workflow
 
-In **CoFlows** a project is called a Workspace. Developers declare the entire environment through two files called **package.json** and **quantapp_config.json** where they define both the project and it's executing containers together with the required resources.
+In **CoFlows** a project is called a Workflow. Developers declare the entire environment through two files called **package.json** and **quantapp_config.json** where they define both the project and it's executing containers together with the required resources.
 
 [**CoFlows CE (Community Edition)**](https://github.com/QuantApp/CoFlows-CE) is a polyglot runtime that simplifies the development, hosting and deployment of powerful data-centric workflows. **CoFlows** enables developers to create rich **Web-APIs** with almost **zero boiler plate** and scheduled / reactive processes through a range of languages including CoreCLR (C#, F# and VB), JVM (Java and Scala), Python and Javascript. Furthermore, functions written in any of these languages can call each other within the same process with **full interop**.
 
-The logic in Workspaces is assigned to three different types.
+The logic in Workflows is assigned to three different types.
 * Base which are general libraries called through out the system
 * [Agents](Files/docs/Agents/General.md "Agents") which are designed to react to either changes to an [M](../M.md "M Set") topic, or to scheduled events according to developer defined **cron jobs** within **CoFlows**.
-* [Queries](Files/docs/Queries/General.md "Queries") where developers can define Web API entry points to the Workspaces through Queries. Every function defined in a query is automatically assigned a _url_ by the **CoFlows** simplifying the process of creating these endpoints.
+* [Queries](Files/docs/Queries/General.md "Queries") where developers can define Web API entry points to the Workflows through Queries. Every function defined in a query is automatically assigned a _url_ by the **CoFlows** simplifying the process of creating these endpoints.
 
 Every workspace depends on a set of sections (this is all reflected in the **package.json** file):
 * **Base** code containing libraries used across the entire project
@@ -35,7 +35,7 @@ The full list is:
 ## Polyglot <-> Interoperability
 The interop functionality in **CoFlows** is achieved through a open-source projects. **CoreCLR** is the main execution environment that loads both the JVM and Python environments and also interprets Javascript. The Python environment is loaded through a fork of the **PythonNet** library while the JVM is loaded through the **QuantApp.Kernel/JVM** libraries. Please note that the **PythonNet** fork was incorporated into the **QuantApp.Kernel/Python** package for additional integration. For further details please read [Polyglot](Polyglot/General.md "Polyglot")
 
-This repo is an example showing how to structure and create a [**CoFlows**](https://github.com/QuantApp/CoFlows-CE) workspace. Projects in CoFlows are called Workspaces. They contain the logic that defines the Web APIs and scheduled / reactive processes together with the definition of the entire environment including Nuget, Jar and Pip packages that the Workspace depends on.
+This repo is an example showing how to structure and create a [**CoFlows**](https://github.com/QuantApp/CoFlows-CE) workspace. Projects in CoFlows are called Workflows. They contain the logic that defines the Web APIs and scheduled / reactive processes together with the definition of the entire environment including Nuget, Jar and Pip packages that the Workflow depends on.
 
 Although a number of APIs are available for developers, the most notable one is the **M** set which is a **NoSQL persistent and distributed list** in the **QuantApp.Kernel** environment. For more information please see [M](Files/docs/M.md "M").
 
@@ -44,7 +44,7 @@ Install the docker cli tools for Linux containers. Pull the docker public coflow
 
     docker pull coflows/ce
 
-Clone this [**CoFlows**](https://github.com/QuantApp/CoFlows-CE) workspace or create your own package. If you create your own package from scratch please read [Workspace](Files/docs/Workspace.md "Workspace"). Ensure a file called _quantapp_config.json_ exists in the folder you are running [**CoFlows**](https://github.com/QuantApp/CoFlows-CE) in.
+Clone this [**CoFlows**](https://github.com/QuantApp/CoFlows-CE) workspace or create your own package. If you create your own package from scratch please read [Workflow](Files/docs/Workflow.md "Workflow"). Ensure a file called _quantapp_config.json_ exists in the folder you are running [**CoFlows**](https://github.com/QuantApp/CoFlows-CE) in.
 
     quantapp_config.json
     {
@@ -52,7 +52,7 @@ Clone this [**CoFlows**](https://github.com/QuantApp/CoFlows-CE) workspace or cr
             "Connection": "mnt/database.db" ,
             "Type": "sqlite" // **sqlite** for a SQLite db and **mssql** for a MS SQL Server
         },
-        "Workspace": "mnt/package.json",
+        "Workflow": "mnt/package.json",
         "Jupyter": false,
         "Server":{
             "Host": "localhost", //Set the host name
@@ -95,8 +95,8 @@ For more scalable persistence, a MS SQL Server connection is available. Below is
             "Type": "mssql"
         },
 
-### Workspace
-All workspaces are defined by a json file that specifies all of the source code and dependencies of the project. Please read [Workspace](Files/docs/Workspace.md "Workspace").
+### Workflow
+All workspaces are defined by a json file that specifies all of the source code and dependencies of the project. Please read [Workflow](Files/docs/Workflow.md "Workflow").
 
 ### Jupyter
 **CoFlows** allows you to run a Jupyter Lab instances within the container. This allows you to both create notebooks and access the internal terminal. If this value is "true" then the Lab is started otherwise not.
@@ -215,7 +215,7 @@ The code that should be set in this place is the Name of the region as per the t
         Norway East           59.913868   10.752245    norwayeast
 
 ### GPU
-Azure also allows you to deploy **CoFlows** Workspaces to GPU enabled containers. Here you must specify the SKU and the number of cores.
+Azure also allows you to deploy **CoFlows** Workflows to GPU enabled containers. Here you must specify the SKU and the number of cores.
 
 There are certain limitations currently regarding regions and availability as previously stated to please mind the following table:
 
@@ -246,7 +246,7 @@ In some instances you may want to create a custom version of the quantapp_config
 
 
 ### Building
-Workspace can be built (compiled and referenced) either locally or on a remote server. The remote server is defined in the *Cloud* entry in the *quantapp_config.json* file. A local build, as the name specifies means that the workspace is built locally on your machine. In contrast, a cloud build means the Workspace source code is sent to the cloud server, and the cloud server builds the code remotely.
+Workflow can be built (compiled and referenced) either locally or on a remote server. The remote server is defined in the *Cloud* entry in the *quantapp_config.json* file. A local build, as the name specifies means that the workspace is built locally on your machine. In contrast, a cloud build means the Workflow source code is sent to the cloud server, and the cloud server builds the code remotely.
 
         Local:
             unix: bin/build.sh local

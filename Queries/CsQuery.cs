@@ -16,17 +16,18 @@ public class CsQuery
     //Permissions
     public static string Permission()
     {
-        var permission = QuantApp.Kernel.Group.FindGroup("06e1da00-4c81-4a35-914b-81c548b07345").PermissionContext();
+        var user = QuantApp.Kernel.User.ContextUser;
+        var permission = QuantApp.Kernel.User.PermissionContext("06e1da00-4c81-4a35-914b-81c548b07345");
         switch(permission)
         {
             case QuantApp.Kernel.AccessType.Write:
-                return "WRITE";
+                return user.FirstName + " WRITE";
             case QuantApp.Kernel.AccessType.Read:
-                return "READ";
+                return user.FirstName + " READ";
             case QuantApp.Kernel.AccessType.View:
-                return "VIEW";
+                return user.FirstName + " VIEW";
             default:
-                return "DENIED";
+                return user.FirstName + " DENIED";
         }
     }
 
