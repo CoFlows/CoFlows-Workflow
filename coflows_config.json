@@ -14,28 +14,40 @@
         },
         "OAuth": {
             "AzureAdB2C": {
-                "Instance": "https://coflowsad.b2clogin.com/tfp/",
-                "Domain": "coflowsad.onmicrosoft.com",
-                "SignUpSignInPolicyId": "B2C_1_signupsignin1",
-                "ClientId": "ec388b90-777a-4396-afdb-431333ad0bd9",
-                "ClientSecret": "vnFEMw~_X4_b5aa~u9~4V9O1HEtFA3VgyD",
-                "SignInLink": "https://coflowsad.b2clogin.com/coflowsad.onmicrosoft.com/oauth2/v2.0/authorize?p=B2C_1_signupsignin1&client_id=ec388b90-777a-4396-afdb-431333ad0bd9&nonce=defaultNonce&redirect_uri=http%3A%2F%2Flocalhost%2Fauthentication%2Ftoken%2F0&scope=openid+offline_access+ec388b90-777a-4396-afdb-431333ad0bd9&response_type=token&prompt=login&response_mode=query",
+                "Instance": "https://{{...}}.b2clogin.com/tfp/",
+                "Domain": "{{...}}.onmicrosoft.com",
+                "SignUpSignInPolicyId": "...",
+                "ClientId": "...",
+                "ClientSecret": "...",
+                "SignInLink": "https://{{...}}.b2clogin.com/{{...}}.onmicrosoft.com/oauth2/v2.0/authorize?p={{...}}&client_id={{...}}&nonce=defaultNonce&redirect_uri={{...}}&response_type=token&prompt=login&response_mode=query",
                 "DefaultGroupId": "06e1da00-4c81-4a35-914b-81c548b07345"
             },
             "GitHub":{
-                "ClientId": "3b8a0b298a6c5e73d0c8",
-                "ClientSecret": "f4408112041f6be89cecc14cee1860185c0c141f",
-                "SignInLink": "https://github.com/login/oauth/authorize?client_id=3b8a0b298a6c5e73d0c8&scope=user"
+                "ClientId": "...",
+                "ClientSecret": "...",
+                "SignInLink": "https://github.com/login/oauth/authorize?client_id=...&scope=user"
             },
             "LinkedIn":{
-                "ClientId": "86wfeym2q24ezx",
-                "ClientSecret": "NZkJBF08KdP6UiKt"
+                "ClientId": "...",
+                "ClientSecret": "..."
             }
         }
     },
     "Cloud":{
-        "Host": "coflows.quant.app",
+        "Host": "example.coflows.com",
         "SecretKey": "xxx",
         "SSL": true
+    },
+
+    "AzureContainerInstance": {
+        "AuthFile":"mnt/Files/my.azureauth",
+        "Dns": "coflows-example-0",
+        "Region": "AustraliaEast",
+        "Cores": 2,
+        "Mem": 4,
+        "Gpu": {
+            "SKU": "",
+            "Cores": 1
+        }
     }
 }

@@ -1,9 +1,5 @@
 *.DS_Store
 
-jars/
-pip/
-nugets/
-
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

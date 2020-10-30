@@ -185,20 +185,8 @@
   "Bins": [],
   "Files": [
     {
-      "Name": ".DS_Store",
-      "Content": "Files/.DS_Store"
-    },
-    {
       "Name": "my.azureauth",
       "Content": "Files/my.azureauth"
-    },
-    {
-      "Name": "dash_financial_report/.DS_Store",
-      "Content": "Files/dash_financial_report/.DS_Store"
-    },
-    {
-      "Name": "docs/.DS_Store",
-      "Content": "Files/docs/.DS_Store"
     },
     {
       "Name": "docs/GitLink.md",
