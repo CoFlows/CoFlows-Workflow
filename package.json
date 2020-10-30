@@ -11,56 +11,20 @@
       "Content": "Base/fsBase/fsBase.fs"
     },
     {
-      "Name": "Base/pyBase/pybase.py",
-      "Content": "Base/pyBase/pybase.py"
-    },
-    {
-      "Name": "vbBase/vbBase.vb",
-      "Content": "Base/vbBase/vbBase.vb"
-    },
-    {
       "Name": "javabase/javaBase.java",
       "Content": "Base/javabase/javaBase.java"
+    },
+    {
+      "Name": "Base/pyBase/pybase.py",
+      "Content": "Base/pyBase/pybase.py"
     },
     {
       "Name": "scalabase/scalaBase.scala",
       "Content": "Base/scalabase/scalaBase.scala"
     },
     {
-      "Name": "Base/dash_financial_report/utils.py",
-      "Content": "Base/dash_financial_report/utils.py"
-    },
-    {
-      "Name": "Base/dash_financial_report/pages/portfolioManagement.py",
-      "Content": "Base/dash_financial_report/pages/portfolioManagement.py"
-    },
-    {
-      "Name": "Base/dash_financial_report/pages/feesMins.py",
-      "Content": "Base/dash_financial_report/pages/feesMins.py"
-    },
-    {
-      "Name": "Base/dash_financial_report/pages/newsReviews.py",
-      "Content": "Base/dash_financial_report/pages/newsReviews.py"
-    },
-    {
-      "Name": "Base/dash_financial_report/pages/distributions.py",
-      "Content": "Base/dash_financial_report/pages/distributions.py"
-    },
-    {
-      "Name": "Base/dash_financial_report/pages/overview.py",
-      "Content": "Base/dash_financial_report/pages/overview.py"
-    },
-    {
-      "Name": "Base/dash_financial_report/pages/pricePerformance.py",
-      "Content": "Base/dash_financial_report/pages/pricePerformance.py"
-    },
-    {
-      "Name": ".DS_Store",
-      "Content": "Base/.DS_Store"
-    },
-    {
-      "Name": "dash_financial_report/.DS_Store",
-      "Content": "Base/dash_financial_report/.DS_Store"
+      "Name": "vbBase/vbBase.vb",
+      "Content": "Base/vbBase/vbBase.vb"
     }
   ],
   "Agents": [
@@ -102,49 +66,39 @@
   ],
   "Queries": [
     {
-      "Name": "PythonQuery.py",
-      "Content": "Queries/PythonQuery.py",
-      "ID": "PythonQuery"
-    },
-    {
-      "Name": "JavascriptQuery.js",
-      "Content": "Queries/JavascriptQuery.js",
-      "ID": "JavascriptQuery"
+      "Name": "CsQuery.cs",
+      "Content": "Queries/CsQuery.cs",
+      "ID": "CsQuery.cs"
     },
     {
       "Name": "FsQuery.fs",
       "Content": "Queries/FsQuery.fs",
-      "ID": "FsQuery"
-    },
-    {
-      "Name": "CsQuery.cs",
-      "Content": "Queries/CsQuery.cs",
-      "ID": "CsQuery"
-    },
-    {
-      "Name": "VbQuery.vb",
-      "Content": "Queries/VbQuery.vb",
-      "ID": "VbQuery"
+      "ID": "FsQuery.fs"
     },
     {
       "Name": "JavaQuery.java",
       "Content": "Queries/JavaQuery.java",
-      "ID": "JavaQuery"
+      "ID": "JavaQuery.java"
+    },
+    {
+      "Name": "JavascriptQuery.js",
+      "Content": "Queries/JavascriptQuery.js",
+      "ID": "JavascriptQuery.js"
+    },
+    {
+      "Name": "PythonQuery.py",
+      "Content": "Queries/PythonQuery.py",
+      "ID": "PythonQuery.py"
     },
     {
       "Name": "ScalaQuery.scala",
       "Content": "Queries/ScalaQuery.scala",
-      "ID": "ScalaQuery"
+      "ID": "ScalaQuery.scala"
     },
     {
-      "Name": "dashFinReport.py",
-      "Content": "Queries/dashFinReport.py",
-      "ID": "dashFinReport"
-    },
-    {
-      "Name": "dashYieldCurve.py",
-      "Content": "Queries/dashYieldCurve.py",
-      "ID": "dashYieldCurve.py"
+      "Name": "VbQuery.vb",
+      "Content": "Queries/VbQuery.vb",
+      "ID": "VbQuery.vb"
     }
   ],
   "Permissions": [
@@ -193,6 +147,10 @@
       "Content": "Files/docs/GitLink.md"
     },
     {
+      "Name": "docs/Instructions.md",
+      "Content": "Files/docs/Instructions.md"
+    },
+    {
       "Name": "docs/M.md",
       "Content": "Files/docs/M.md"
     },
@@ -203,106 +161,6 @@
     {
       "Name": "docs/Workspace.md",
       "Content": "Files/docs/Workspace.md"
-    },
-    {
-      "Name": "dash_financial_report/assets/base.css",
-      "Content": "Files/dash_financial_report/assets/base.css"
-    },
-    {
-      "Name": "dash_financial_report/assets/base2.css",
-      "Content": "Files/dash_financial_report/assets/base2.css"
-    },
-    {
-      "Name": "dash_financial_report/assets/base3.css",
-      "Content": "Files/dash_financial_report/assets/base3.css"
-    },
-    {
-      "Name": "dash_financial_report/assets/dash-financial-logo.png",
-      "Content": "Files/dash_financial_report/assets/dash-financial-logo.png"
-    },
-    {
-      "Name": "dash_financial_report/assets/risk_reward.png",
-      "Content": "Files/dash_financial_report/assets/risk_reward.png"
-    },
-    {
-      "Name": "dash_financial_report/assets/styles.css",
-      "Content": "Files/dash_financial_report/assets/styles.css"
-    },
-    {
-      "Name": "dash_financial_report/data/df_after_tax.csv",
-      "Content": "Files/dash_financial_report/data/df_after_tax.csv"
-    },
-    {
-      "Name": "dash_financial_report/data/df_avg_returns.csv",
-      "Content": "Files/dash_financial_report/data/df_avg_returns.csv"
-    },
-    {
-      "Name": "dash_financial_report/data/df_current_prices.csv",
-      "Content": "Files/dash_financial_report/data/df_current_prices.csv"
-    },
-    {
-      "Name": "dash_financial_report/data/df_dividend.csv",
-      "Content": "Files/dash_financial_report/data/df_dividend.csv"
-    },
-    {
-      "Name": "dash_financial_report/data/df_equity_char.csv",
-      "Content": "Files/dash_financial_report/data/df_equity_char.csv"
-    },
-    {
-      "Name": "dash_financial_report/data/df_equity_diver.csv",
-      "Content": "Files/dash_financial_report/data/df_equity_diver.csv"
-    },
-    {
-      "Name": "dash_financial_report/data/df_expenses.csv",
-      "Content": "Files/dash_financial_report/data/df_expenses.csv"
-    },
-    {
-      "Name": "dash_financial_report/data/df_fund_facts.csv",
-      "Content": "Files/dash_financial_report/data/df_fund_facts.csv"
-    },
-    {
-      "Name": "dash_financial_report/data/df_graph.csv",
-      "Content": "Files/dash_financial_report/data/df_graph.csv"
-    },
-    {
-      "Name": "dash_financial_report/data/df_hist_prices.csv",
-      "Content": "Files/dash_financial_report/data/df_hist_prices.csv"
-    },
-    {
-      "Name": "dash_financial_report/data/df_minimums.csv",
-      "Content": "Files/dash_financial_report/data/df_minimums.csv"
-    },
-    {
-      "Name": "dash_financial_report/data/df_price_perf.csv",
-      "Content": "Files/dash_financial_report/data/df_price_perf.csv"
-    },
-    {
-      "Name": "dash_financial_report/data/df_realized.csv",
-      "Content": "Files/dash_financial_report/data/df_realized.csv"
-    },
-    {
-      "Name": "dash_financial_report/data/df_recent_returns.csv",
-      "Content": "Files/dash_financial_report/data/df_recent_returns.csv"
-    },
-    {
-      "Name": "dash_financial_report/data/df_unrealized.csv",
-      "Content": "Files/dash_financial_report/data/df_unrealized.csv"
-    },
-    {
-      "Name": "dash_yield_curve/assets/dash-logo.png",
-      "Content": "Files/dash_yield_curve/assets/dash-logo.png"
-    },
-    {
-      "Name": "dash_yield_curve/assets/styles.css",
-      "Content": "Files/dash_yield_curve/assets/styles.css"
-    },
-    {
-      "Name": "dash_yield_curve/assets/stylesheet.css",
-      "Content": "Files/dash_yield_curve/assets/stylesheet.css"
-    },
-    {
-      "Name": "dash_yield_curve/data/yield_curve.csv",
-      "Content": "Files/dash_yield_curve/data/yield_curve.csv"
     },
     {
       "Name": "docs/Agents/Cs.md",
