@@ -10,6 +10,13 @@ class JavaQuery
         return "something";
     }
 
+    /// <api name="Add">
+    /// <summary> Function that adds two numbers </summary>
+    /// <remarks> it only works for integers </remarks>
+    /// <returns> returns an integer </returns>
+    /// <param name="x">First number to add</param>
+    /// <param name="y">Second number to add</param>
+    /// </api>
     public static int Add(int x, int y)
     {
         return x + y;

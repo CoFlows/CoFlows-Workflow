@@ -1,6 +1,13 @@
 def getName():
     return "something"
 
+### <api name="Add">
+### <summary> Function that adds two numbers </summary>
+### <remarks> it only works for pynum </remarks>
+### <returns> returns an integer </returns>
+### <param name="x">First number to add</param>
+### <param name="y">Second number to add</param>
+### </api>
 def Add(x, y):
     return x + y
 

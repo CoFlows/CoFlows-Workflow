@@ -5,7 +5,40 @@ module FsQuery
     open Python.Runtime 
     open QuantApp.Kernel
     
+    /// <api name="getName">
+    ///     <description> Function that returns a name </description>
+    ///     <returns> returns an string </returns>
+    ///     <permissions>
+    ///         <group id="06e1da00-4c81-4a35-914b-81c548b07345" cost="0.2" currency="USD" type="hourly"/>
+    ///         <group id="06e1da00-4c81-4a35-914b-81c548b07345" cost="20" currency="USD" type="percall"/>
+    ///         <group id="06e1da00-4c81-4a35-914b-81c548b07345"/>
+    ///     </permissions>
+    /// </api>
     let getName = "something"
+    
+    let groups() =
+        " ------------ 1 " + QuantApp.Kernel.User.ContextUser.FirstName |> Console.WriteLine
+        let g = QuantApp.Kernel.Group.MasterGroups() |> Seq.toList
+        " ------------ 2 " + QuantApp.Kernel.User.ContextUser.FirstName |> Console.WriteLine
+        let dd = 
+            g
+            |> List.map(fun x -> 
+                " ------------ 3 " + QuantApp.Kernel.User.ContextUser.FirstName |> Console.WriteLine
+                {| 
+                    Name = x.Name;
+                    Permission = x.PermissionContext().ToString();
+                    UserID = QuantApp.Kernel.User.ContextUser.FirstName
+                |})
+        " ------------ 4 " + QuantApp.Kernel.User.ContextUser.FirstName |> Console.WriteLine    
+        dd
+        
+    /// <api name="Add">
+    /// <summary> Function that adds two numbers </summary>
+    /// <remarks> it only works for all numbers </remarks>
+    /// <returns> returns an integer </returns>
+    /// <param name="x">First number to add</param>
+    /// <param name="y">Second number to add</param>
+    /// </api>
     let Add x y = x + y
 
     //Permission
