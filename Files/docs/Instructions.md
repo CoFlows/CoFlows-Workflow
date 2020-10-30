@@ -3,7 +3,7 @@
 ## Notes:
 * If ID in package is empty then build.sh will auto generate an ID
 * build.sh will add new entries to the Files, Queries, Agents and Base sections of the package.json. It will not delete entries, this needs to be done manually.
-* $WID$ is code to populate the Workflow ID in queries and agents
+* $WID$ is code to populate the Workflow ID in queries and agents. NOTE: Files will be overwritten once with the replacements.
   
 
 ## Steps
