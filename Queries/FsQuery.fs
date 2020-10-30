@@ -1,3 +1,11 @@
+/// <info version="1.0.100">
+///     <title>F# Query Test API</title>
+///     <description>F# Query API with samples for permissions, documentation and function definitions</description>
+///     <termsOfService url="https://www.coflo.ws"/>
+///     <contact name="Arturo Rodriguez" url="https://www.coflo.ws" email="arturo@coflo.ws"/>
+///     <license name="Apache 2.0" url="https://www.apache.org/licenses/LICENSE-2.0.html"/>
+/// </info>
+
 module FsQuery
     open FSharp.Interop.Dynamic
     open System
@@ -6,52 +14,48 @@ module FsQuery
     open QuantApp.Kernel
     
     /// <api name="getName">
-    ///     <description> Function that returns a name </description>
-    ///     <returns> returns an string </returns>
+    ///     <description>Function that returns a name</description>
+    ///     <returns>returns an string</returns>
     ///     <permissions>
-    ///         <group id="06e1da00-4c81-4a35-914b-81c548b07345" cost="0.2" currency="USD" type="hourly"/>
-    ///         <group id="06e1da00-4c81-4a35-914b-81c548b07345" cost="20" currency="USD" type="percall"/>
-    ///         <group id="06e1da00-4c81-4a35-914b-81c548b07345"/>
+    ///         <group id="$WID$" permission="write"/>
     ///     </permissions>
     /// </api>
     let getName = "something"
-    
-    let groups() =
-        " ------------ 1 " + QuantApp.Kernel.User.ContextUser.FirstName |> Console.WriteLine
-        let g = QuantApp.Kernel.Group.MasterGroups() |> Seq.toList
-        " ------------ 2 " + QuantApp.Kernel.User.ContextUser.FirstName |> Console.WriteLine
-        let dd = 
-            g
-            |> List.map(fun x -> 
-                " ------------ 3 " + QuantApp.Kernel.User.ContextUser.FirstName |> Console.WriteLine
-                {| 
-                    Name = x.Name;
-                    Permission = x.PermissionContext().ToString();
-                    UserID = QuantApp.Kernel.User.ContextUser.FirstName
-                |})
-        " ------------ 4 " + QuantApp.Kernel.User.ContextUser.FirstName |> Console.WriteLine    
-        dd
         
     /// <api name="Add">
-    /// <summary> Function that adds two numbers </summary>
-    /// <remarks> it only works for all numbers </remarks>
-    /// <returns> returns an integer </returns>
-    /// <param name="x">First number to add</param>
-    /// <param name="y">Second number to add</param>
+    ///     <description>Function that adds two numbers</description>
+    ///     <returns>returns an integer</returns>
+    ///     <param name="x" type="integer">First number to add</param>
+    ///     <param name="y" type="integer">Second number to add</param>
+    ///     <permissions>
+    ///         <group id="$WID$" permission="read"/>
+    ///     </permissions>
     /// </api>
     let Add x y = x + y
 
-    //Permission
+     /// <api name="Permission">
+    ///     <description>Function that returns a permission</description>
+    ///     <returns> returns an string</returns>
+    ///     <permissions>
+    ///         <group id="$WID$" permission="view"/>
+    ///     </permissions>
+    /// </api>
     let Permission() =
         let user = QuantApp.Kernel.User.ContextUser
-        let permission = QuantApp.Kernel.User.PermissionContext("06e1da00-4c81-4a35-914b-81c548b07345")
+        let permission = QuantApp.Kernel.User.PermissionContext("$WID$")
         match permission with
         | QuantApp.Kernel.AccessType.Write -> user.FirstName + " WRITE"
         | QuantApp.Kernel.AccessType.Read -> user.FirstName + " READ"
         | QuantApp.Kernel.AccessType.View -> user.FirstName + " VIEW"
         | _ -> user.FirstName + " DENIED"
 
-    // C# Interop
+    /// <api name="Cs">
+    ///     <description>C# Interop sample</description>
+    ///     <returns> returns an string</returns>
+    ///     <permissions>
+    ///         <group id="$WID$" permission="view"/>
+    ///     </permissions>
+    /// </api>
     let Cs() =
     
         let csbase = Cs.Base.csBase()
@@ -64,7 +68,13 @@ module FsQuery
 
         result
 
-    //Python Interop
+    /// <api name="Python">
+    ///     <description>Python Interop sample</description>
+    ///     <returns> returns an string</returns>
+    ///     <permissions>
+    ///         <group id="$WID$" permission="view"/>
+    ///     </permissions>
+    /// </api>
     let Python() =
         using (Py.GIL()) ( fun _ ->
             let pymodule = Py.Import("Base.pyBase.pybase")
@@ -78,7 +88,13 @@ module FsQuery
             result    
         )
         
-    //Scala Interop
+    /// <api name="Scala">
+    ///     <description>Scala Interop sample</description>
+    ///     <returns> returns an string</returns>
+    ///     <permissions>
+    ///         <group id="$WID$" permission="view"/>
+    ///     </permissions>
+    /// </api>
     let Scala() =
         let scalabase = JVM.Runtime.CreateInstance("scalabase.scalaBase")
         let age : double = scalabase?getAge() //important step to define type of getAge()
@@ -90,7 +106,13 @@ module FsQuery
 
         result
         
-    //Java Interop
+    /// <api name="Java">
+    ///     <description>Java Interop sample</description>
+    ///     <returns> returns an string</returns>
+    ///     <permissions>
+    ///         <group id="$WID$" permission="view"/>
+    ///     </permissions>
+    /// </api>
     let Java() =
         let javabase = JVM.Runtime.CreateInstance("javabase.javaBase")
         let age : double = javabase?getAge //important step to define type of getAge()

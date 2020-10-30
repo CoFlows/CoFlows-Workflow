@@ -1,26 +1,24 @@
+/// <info version="1.0.100">
+///     <title>C# Query Test API</title>
+///     <description>C# Query API with samples for permissions, documentation and function definitions</description>
+///     <termsOfService url="https://www.coflo.ws"/>
+///     <contact name="Arturo Rodriguez" url="https://www.coflo.ws" email="arturo@coflo.ws"/>
+///     <license name="Apache 2.0" url="https://www.apache.org/licenses/LICENSE-2.0.html"/>
+/// </info>
+
 using Python.Runtime;
 using JVM;
 
 using System;
 using System.Linq;
 
-/// <info version="1.0.100">
-///     <title>CsQuery Test API</title>
-///     <description>CsQuery Test API</description>
-///     <termsOfService url="https://www.coflo.ws"/>
-///     <contact name="Arturo Rodriguez" url="https://www.coflo.ws" email="arturo@coflo.ws"/>
-///     <license name="Apache 2.0" url="https://www.apache.org/licenses/LICENSE-2.0.html"/>
-/// </info>
-
 public class CsQuery
 {
     /// <api name="getName">
-    ///     <description> Function that returns a name </description>
-    ///     <returns> returns an string </returns>
+    ///     <description>Function that returns a name</description>
+    ///     <returns>returns an string</returns>
     ///     <permissions>
-    ///         <group id="06e1da00-4c81-4a35-914b-81c548b07345" cost="0.2" currency="USD" type="hourly"/>
-    ///         <group id="06e1da00-4c81-4a35-914b-81c548b07345" cost="20" currency="USD" type="percall"/>
-    ///         <group id="06e1da00-4c81-4a35-914b-81c548b07345" cost="30" permission="write"/>
+    ///         <group id="$WID$" permission="write"/>
     ///     </permissions>
     /// </api>
     public static string getName()
@@ -29,32 +27,30 @@ public class CsQuery
     }
 
     /// <api name="Add">
-    ///     <description> Function that adds two numbers </description>
-    ///     <returns> returns an integer </returns>
+    ///     <description>Function that adds two numbers</description>
+    ///     <returns>returns an integer</returns>
     ///     <param name="x" type="integer">First number to add</param>
     ///     <param name="y" type="integer">Second number to add</param>
+    ///     <permissions>
+    ///         <group id="$WID$" permission="read"/>
+    ///     </permissions>
     /// </api>
     public static int Add(int x, int y)
     {
-        var indicatorInfoTable = QuantApp.Kernel.Database.DB["DefaultStrategy"].GetDataTable("CMIndicatorInfoList", null, null);
-        var rows = indicatorInfoTable.Rows;
-        foreach (var dr in rows)
-        {
-        }
         return x + y;
     }
     
     /// <api name="Permission">
-    ///     <description> Function that returns a permission </description>
-    ///     <returns> returns an string-- </returns>
+    ///     <description>Function that returns a permission</description>
+    ///     <returns> returns an string</returns>
     ///     <permissions>
-    ///         <group id="06e1da00-4c81-4a35-914b-81c548b07345" permission="view"/>
+    ///         <group id="$WID$" permission="view"/>
     ///     </permissions>
     /// </api>
     public static string Permission()
     {
         var user = QuantApp.Kernel.User.ContextUser;
-        var permission = QuantApp.Kernel.User.PermissionContext("06e1da00-4c81-4a35-914b-81c548b07345");
+        var permission = QuantApp.Kernel.User.PermissionContext("$WID$");
         switch(permission)
         {
             case QuantApp.Kernel.AccessType.Write:
@@ -68,7 +64,13 @@ public class CsQuery
         }
     }
 
-    // F# Interop
+    /// <api name="Fs">
+    ///     <description>F# Interop sample</description>
+    ///     <returns> returns an string</returns>
+    ///     <permissions>
+    ///         <group id="$WID$" permission="view"/>
+    ///     </permissions>
+    /// </api>
     public static string Fs()
     {
         var fsbase = new Fs.Base.FsBase();
@@ -82,7 +84,13 @@ public class CsQuery
         return result;
     }
 
-    //Python Interop
+    /// <api name="Python">
+    ///     <description>Python Interop sample</description>
+    ///     <returns> returns an string</returns>
+    ///     <permissions>
+    ///         <group id="$WID$" permission="view"/>
+    ///     </permissions>
+    /// </api>
     public static string Python()
     {
         using(Py.GIL())
@@ -99,7 +107,13 @@ public class CsQuery
         }
     }
 
-    //Java Interop
+    /// <api name="Java">
+    ///     <description>Java Interop sample</description>
+    ///     <returns> returns an string</returns>
+    ///     <permissions>
+    ///         <group id="$WID$" permission="view"/>
+    ///     </permissions>
+    /// </api>
     public static string Java()
     {
         dynamic javabase = JVM.Runtime.CreateInstance("javabase.javaBase");
@@ -112,7 +126,13 @@ public class CsQuery
         return result;
     }
 
-    //Scala Interop
+    /// <api name="Scala">
+    ///     <description>Scala Interop sample</description>
+    ///     <returns> returns an string</returns>
+    ///     <permissions>
+    ///         <group id="$WID$" permission="view"/>
+    ///     </permissions>
+    /// </api>
     public static string Scala()
     {
         dynamic scalabase = JVM.Runtime.CreateInstance("scalabase.scalaBase");

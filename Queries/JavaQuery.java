@@ -1,3 +1,11 @@
+/// <info version="1.0.100">
+///     <title>Java Query Test API</title>
+///     <description>Java Query API with samples for permissions, documentation and function definitions</description>
+///     <termsOfService url="https://www.coflo.ws"/>
+///     <contact name="Arturo Rodriguez" url="https://www.coflo.ws" email="arturo@coflo.ws"/>
+///     <license name="Apache 2.0" url="https://www.apache.org/licenses/LICENSE-2.0.html"/>
+/// </info>
+
 import app.quant.clr.*;
 import java.util.*;
 
@@ -5,29 +13,44 @@ class JavaQuery
 {
     public JavaQuery(){}
 
+    /// <api name="getName">
+    ///     <description>Function that returns a name</description>
+    ///     <returns>returns an string</returns>
+    ///     <permissions>
+    ///         <group id="$WID$" permission="write"/>
+    ///     </permissions>
+    /// </api>
     public static String getName()
     {
         return "something";
     }
 
     /// <api name="Add">
-    /// <summary> Function that adds two numbers </summary>
-    /// <remarks> it only works for integers </remarks>
-    /// <returns> returns an integer </returns>
-    /// <param name="x">First number to add</param>
-    /// <param name="y">Second number to add</param>
+    ///     <description>Function that adds two numbers</description>
+    ///     <returns>returns an integer</returns>
+    ///     <param name="x" type="integer">First number to add</param>
+    ///     <param name="y" type="integer">Second number to add</param>
+    ///     <permissions>
+    ///         <group id="$WID$" permission="read"/>
+    ///     </permissions>
     /// </api>
     public static int Add(int x, int y)
     {
         return x + y;
     }
 
-    // Permission
+    /// <api name="Permission">
+    ///     <description>Function that returns a permission</description>
+    ///     <returns> returns an string</returns>
+    ///     <permissions>
+    ///         <group id="$WID$" permission="view"/>
+    ///     </permissions>
+    /// </api>
     public static String Permission()
     {
         CLRObject userClass = CLRRuntime.GetClass("QuantApp.Kernel.User");
         CLRObject user = (CLRObject)userClass.Invoke("GetContextUser");
-        int permission = (int)userClass.Invoke("PermissionContext", "06e1da00-4c81-4a35-914b-81c548b07345");
+        int permission = (int)userClass.Invoke("PermissionContext", "$WID$");
         
         switch(permission)
         {
@@ -42,7 +65,13 @@ class JavaQuery
         }
     }
     
-    // C# Interop
+    /// <api name="Cs">
+    ///     <description>C# Interop sample</description>
+    ///     <returns> returns an string</returns>
+    ///     <permissions>
+    ///         <group id="$WID$" permission="view"/>
+    ///     </permissions>
+    /// </api>
     public static String Cs()
     {
         CLRObject csbase = CLRRuntime.CreateInstance("Cs.Base.csBase");
@@ -61,7 +90,13 @@ class JavaQuery
         return result;
     }
     
-    // Python Interop
+    /// <api name="Python">
+    ///     <description>Python Interop sample</description>
+    ///     <returns> returns an string</returns>
+    ///     <permissions>
+    ///         <group id="$WID$" permission="view"/>
+    ///     </permissions>
+    /// </api>
     public static Object Python()
     {
         return CLRRuntime.Python((x) -> {
