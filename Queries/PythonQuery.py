@@ -34,7 +34,7 @@ def Add(x, y):
 ### </api>
 def Permission():
     quser = qak.User.ContextUser
-    permission = qak.User.PermissionContext("06e1da00-4c81-4a35-914b-81c548b07345")
+    permission = qak.User.PermissionContext("$WID$")
     if permission == qak.AccessType.Write:
         return quser.FirstName + " WRITE"
     elif permission == qak.AccessType.Read:
