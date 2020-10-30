@@ -18,7 +18,7 @@ Build the workflow
 
     sh build.sh local
 
-This steps populats the Base, Agents and Queries sections of the **package.json** file. It also pulls all dependencies declared in the nuget, jars and pip sections of the **package.json** entries.
+This steps populats the Base, Agents and Queries sections of the **package.json** file. It also pulls all dependencies declared in the nuget, jars and pip sections of the **package.json** entries. Note that F# requires Base files to be ordered according to their dependencies. If a F# base files depends on another F# file please make sure that the the files are ordered accordingly.
 
 ### Execute
 Run the server in local mode
