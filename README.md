@@ -1,6 +1,6 @@
 # CoFlows Workflow
 
-In **CoFlows** a project is called a Workflow. Developers declare the entire environment through two files called **package.json** and **quantapp_config.json** where they define both the project and it's executing containers together with the required resources.
+In **CoFlows** a project is called a Workflow. Developers declare the entire environment through two files called **package.json** and **coflows_config.json** where they define both the project and it's executing containers together with the required resources.
 
 [**CoFlows CE (Community Edition)**](https://github.com/QuantApp/CoFlows-CE) is a polyglot runtime that simplifies the development, hosting and deployment of powerful data-centric workflows. **CoFlows** enables developers to create rich **Web-APIs** with almost **zero boiler plate** and scheduled / reactive processes through a range of languages including CoreCLR (C#, F# and VB), JVM (Java and Scala), Python and Javascript. Furthermore, functions written in any of these languages can call each other within the same process with **full interop**.
 
@@ -44,9 +44,9 @@ Install the docker cli tools for Linux containers. Pull the docker public coflow
 
     docker pull coflows/ce
 
-Clone this [**CoFlows**](https://github.com/QuantApp/CoFlows-CE) workspace or create your own package. If you create your own package from scratch please read [Workflow](Files/docs/Workflow.md "Workflow"). Ensure a file called _quantapp_config.json_ exists in the folder you are running [**CoFlows**](https://github.com/QuantApp/CoFlows-CE) in.
+Clone this [**CoFlows**](https://github.com/QuantApp/CoFlows-CE) workspace or create your own package. If you create your own package from scratch please read [Workflow](Files/docs/Workflow.md "Workflow"). Ensure a file called _coflows_config.json_ exists in the folder you are running [**CoFlows**](https://github.com/QuantApp/CoFlows-CE) in.
 
-    quantapp_config.json
+    coflows_config.json
     {
         "Database": { 
             "Connection": "mnt/database.db" ,
@@ -240,13 +240,13 @@ First, to run the a local version of the server you can execute the following sc
         unix: bin/server.sh
         win: bin/bat/server.bat
 
-In some instances you may want to create a custom version of the quantapp_config.json setup. For example you may want to test connections of the same code to various databases. To this end you can type: 
-        unix: bin/server.sh custom_quantapp_config.json
-        win: bin/bat/server.bat custom_quantapp_config.json
+In some instances you may want to create a custom version of the coflows_config.json setup. For example you may want to test connections of the same code to various databases. To this end you can type: 
+        unix: bin/server.sh custom_coflows_config.json
+        win: bin/bat/server.bat custom_coflows_config.json
 
 
 ### Building
-Workflow can be built (compiled and referenced) either locally or on a remote server. The remote server is defined in the *Cloud* entry in the *quantapp_config.json* file. A local build, as the name specifies means that the workspace is built locally on your machine. In contrast, a cloud build means the Workflow source code is sent to the cloud server, and the cloud server builds the code remotely.
+Workflow can be built (compiled and referenced) either locally or on a remote server. The remote server is defined in the *Cloud* entry in the *coflows_config.json* file. A local build, as the name specifies means that the workspace is built locally on your machine. In contrast, a cloud build means the Workflow source code is sent to the cloud server, and the cloud server builds the code remotely.
 
         Local:
             unix: bin/build.sh local
@@ -267,10 +267,10 @@ Developers can execute queries without the need to either start a local server o
             unix: bin/query.sh cloud query_id function_name  parameters[0] ... parameters[n]
             win:  bin/bat/query.bat cloud query_id function_name  parameters[0] ... parameters[n]
 
-If you want to use a custom setup defined by another version of the quantapp_config.json you can do the following:
+If you want to use a custom setup defined by another version of the coflows_config.json you can do the following:
 
-        unix: bin/query_customg.sh {custom_quantapp_config.json} local query_id function_name  parameters[0] ... parameters[n]
-        win:  bin/bat/query_custom.bat {custom_quantapp_config.json} local query_id function_name  parameters[0] ... parameters[n]
+        unix: bin/query_customg.sh {custom_coflows_config.json} local query_id function_name  parameters[0] ... parameters[n]
+        win:  bin/bat/query_custom.bat {custom_coflows_config.json} local query_id function_name  parameters[0] ... parameters[n]
 
 Deploying to an Azure Container Instances is achieved through (after you have created the auth config file):
 
