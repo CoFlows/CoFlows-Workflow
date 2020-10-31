@@ -26,4 +26,12 @@ Run the server in local mode
     sh server.sh localhost.json
 
 
+## Agents
+* Add new Agents
+* Startup scripts
+
+## Query
+* Add new query
+
+
 

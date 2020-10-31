@@ -6,6 +6,10 @@
 ///     <license name="Apache 2.0" url="https://www.apache.org/licenses/LICENSE-2.0.html"/>
 /// </info>
 
+var qengine = importNamespace('QuantApp.Engine')
+var qkernel = importNamespace('QuantApp.Kernel')
+
+
 /// <api name="getName">
 ///     <description>Function that returns a name</description>
 ///     <returns>returns an string</returns>
@@ -27,3 +31,69 @@ let getName = 'something'
 let Add = function(x, y) {
         return x + y
     }
+
+/// <api name="Permission">
+///     <description>Function that returns a permission</description>
+///     <returns> returns an string</returns>
+///     <permissions>
+///         <group id="$WID$" permission="view"/>
+///     </permissions>
+/// </api>
+let Permission = function() {
+    var user = qkernel.User.ContextUser
+    var permission = qkernel.User.PermissionContext("$WID$")
+    switch(permission)
+    {
+        case qkernel.AccessType.Write:
+            return user.FirstName + " WRITE"
+        case qkernel.AccessType.Read:
+            return user.FirstName + " READ"
+        case qkernel.AccessType.View:
+            return user.FirstName + " VIEW"
+        default:
+            return user.FirstName + " DENIED"
+    }
+}
+
+var fbase = importNamespace('Fs.Base')
+
+/// <api name="Fs">
+///     <description>F# Interop sample</description>
+///     <returns> returns an string</returns>
+///     <permissions>
+///         <group id="$WID$" permission="view"/>
+///     </permissions>
+/// </api>
+let Fs = function() {
+    var fsbase = fbase.FsBase()
+    var age_in_5_years = fsbase.Add(fsbase.getAge, 5)
+    
+    var result = "F# " + fsbase.getName + " will be " + age_in_5_years + " in 5 years and is interested in:"
+    var interests = fsbase.getInterests()
+    for(var i = 0; i < interests.length; i++)
+        result += System.Environment.NewLine + interests[i]
+        
+    return result
+}
+
+var cbase = importNamespace('Cs.Base')
+
+/// <api name="Cs">
+///     <description>C# Interop sample</description>
+///     <returns> returns an string</returns>
+///     <permissions>
+///         <group id="$WID$" permission="view"/>
+///     </permissions>
+/// </api>
+let Cs = function() {
+    var csbase = cbase.csBase()
+    var age_in_5_years = csbase.Add(csbase.getAge, 5)
+    
+    var result = "C# " + csbase.getName + " will be " + age_in_5_years + " in 5 years and is interested in:"
+    var interests = csbase.getInterests
+    
+    for(var i = 0; i < interests.Count; i++)
+        result += System.Environment.NewLine + interests[i]
+        
+    return result
+}

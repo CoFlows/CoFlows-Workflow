@@ -1,4 +1,10 @@
-//java
+/*
+ * The MIT License (MIT)
+ * Copyright (c) Arturo Rodriguez All rights reserved.
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+ * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
 
 import app.quant.clr.*;
 
@@ -6,6 +12,9 @@ import java.time.*;
 import java.time.format.*;
 
 import javabase.*;
+
+import java.util.*;
+import com.google.gson.Gson;
 
 class JavaAgent
 {
@@ -53,8 +62,12 @@ class JavaAgent
 
             Utils.Invoke("SetFunction", "Body", CLRRuntime.CreateDelegate("QuantApp.Engine.Body", (x) -> { 
                 Object data = x[0];
+
+                // Gson gson = new Gson();
+                Map map = new Gson().fromJson(data.toString(), Map.class);
+                if(map.containsKey("Data") && map.get("Data").equals("Initial Execution"))
+                    System.out.println("     Java Initial Execute @ " + (new Date()));
                 
-                System.out.println("Java Agent Body: " + data);
                 return data;
             })),
 
