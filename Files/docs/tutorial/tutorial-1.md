@@ -4,6 +4,7 @@ This tutorial explains how to create a simple API with [**CoFlows CE (Community 
 * Queries
 * Groups and Permissions
 * Secret Keys
+* HTTP Requests
 * Open API Schema
 
 to gain a general overview of the CoFlows environment.
