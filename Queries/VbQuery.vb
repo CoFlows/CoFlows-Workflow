@@ -11,7 +11,7 @@ Public Class VbQuery
     '''     <description>Function that returns a name</description>
     '''     <returns>returns an string</returns>
     '''     <permissions>
-    '''         <group id="$WID$" permission="write"/>
+    '''         <group id="9b926680-059a-4a57-8ea8-a1d6c623c760" permission="write"/>
     '''     </permissions>
     ''' </api>
     Public Shared Function getName() As String
@@ -24,7 +24,7 @@ Public Class VbQuery
     '''     <param name="x" type="integer">First number to add</param>
     '''     <param name="y" type="integer">Second number to add</param>
     '''     <permissions>
-    '''         <group id="$WID$" permission="read"/>
+    '''         <group id="9b926680-059a-4a57-8ea8-a1d6c623c760" permission="read"/>
     '''     </permissions>
     ''' </api>
     Public Shared Function Add(x as Integer, y as Integer) As Integer

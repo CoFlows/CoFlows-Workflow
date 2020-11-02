@@ -14,7 +14,7 @@ var qkernel = importNamespace('QuantApp.Kernel')
 ///     <description>Function that returns a name</description>
 ///     <returns>returns an string</returns>
 ///     <permissions>
-///         <group id="$WID$" permission="write"/>
+///         <group id="9b926680-059a-4a57-8ea8-a1d6c623c760" permission="write"/>
 ///     </permissions>
 /// </api>
 let getName = 'something'
@@ -25,7 +25,7 @@ let getName = 'something'
 ///     <param name="x" type="integer">First number to add</param>
 ///     <param name="y" type="integer">Second number to add</param>
 ///     <permissions>
-///         <group id="$WID$" permission="read"/>
+///         <group id="9b926680-059a-4a57-8ea8-a1d6c623c760" permission="read"/>
 ///     </permissions>
 /// </api>
 let Add = function(x, y) {
@@ -36,12 +36,12 @@ let Add = function(x, y) {
 ///     <description>Function that returns a permission</description>
 ///     <returns> returns an string</returns>
 ///     <permissions>
-///         <group id="$WID$" permission="view"/>
+///         <group id="9b926680-059a-4a57-8ea8-a1d6c623c760" permission="view"/>
 ///     </permissions>
 /// </api>
 let Permission = function() {
     var user = qkernel.User.ContextUser
-    var permission = qkernel.User.PermissionContext("$WID$")
+    var permission = qkernel.User.PermissionContext("9b926680-059a-4a57-8ea8-a1d6c623c760")
     switch(permission)
     {
         case qkernel.AccessType.Write:
@@ -61,7 +61,7 @@ var fbase = importNamespace('Fs.Base')
 ///     <description>F# Interop sample</description>
 ///     <returns> returns an string</returns>
 ///     <permissions>
-///         <group id="$WID$" permission="view"/>
+///         <group id="9b926680-059a-4a57-8ea8-a1d6c623c760" permission="view"/>
 ///     </permissions>
 /// </api>
 let Fs = function() {
@@ -82,7 +82,7 @@ var cbase = importNamespace('Cs.Base')
 ///     <description>C# Interop sample</description>
 ///     <returns> returns an string</returns>
 ///     <permissions>
-///         <group id="$WID$" permission="view"/>
+///         <group id="9b926680-059a-4a57-8ea8-a1d6c623c760" permission="view"/>
 ///     </permissions>
 /// </api>
 let Cs = function() {

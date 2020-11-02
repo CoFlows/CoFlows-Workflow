@@ -18,7 +18,7 @@ public class CsQuery
     ///     <description>Function that returns a name</description>
     ///     <returns>returns an string</returns>
     ///     <permissions>
-    ///         <group id="$WID$" permission="write"/>
+    ///         <group id="9b926680-059a-4a57-8ea8-a1d6c623c760" permission="write"/>
     ///     </permissions>
     /// </api>
     public static string getName()
@@ -32,7 +32,7 @@ public class CsQuery
     ///     <param name="x" type="integer">First number to add</param>
     ///     <param name="y" type="integer">Second number to add</param>
     ///     <permissions>
-    ///         <group id="$WID$" permission="read"/>
+    ///         <group id="9b926680-059a-4a57-8ea8-a1d6c623c760" permission="read"/>
     ///     </permissions>
     /// </api>
     public static int Add(int x, int y)
@@ -44,13 +44,13 @@ public class CsQuery
     ///     <description>Function that returns a permission</description>
     ///     <returns> returns an string</returns>
     ///     <permissions>
-    ///         <group id="$WID$" permission="view"/>
+    ///         <group id="9b926680-059a-4a57-8ea8-a1d6c623c760" permission="view"/>
     ///     </permissions>
     /// </api>
     public static string Permission()
     {
         var user = QuantApp.Kernel.User.ContextUser;
-        var permission = QuantApp.Kernel.User.PermissionContext("$WID$");
+        var permission = QuantApp.Kernel.User.PermissionContext("9b926680-059a-4a57-8ea8-a1d6c623c760");
         switch(permission)
         {
             case QuantApp.Kernel.AccessType.Write:
@@ -68,7 +68,7 @@ public class CsQuery
     ///     <description>F# Interop sample</description>
     ///     <returns> returns an string</returns>
     ///     <permissions>
-    ///         <group id="$WID$" permission="view"/>
+    ///         <group id="9b926680-059a-4a57-8ea8-a1d6c623c760" permission="view"/>
     ///     </permissions>
     /// </api>
     public static string Fs()
@@ -88,7 +88,7 @@ public class CsQuery
     ///     <description>Python Interop sample</description>
     ///     <returns> returns an string</returns>
     ///     <permissions>
-    ///         <group id="$WID$" permission="view"/>
+    ///         <group id="9b926680-059a-4a57-8ea8-a1d6c623c760" permission="view"/>
     ///     </permissions>
     /// </api>
     public static string Python()
@@ -111,7 +111,7 @@ public class CsQuery
     ///     <description>Java Interop sample</description>
     ///     <returns> returns an string</returns>
     ///     <permissions>
-    ///         <group id="$WID$" permission="view"/>
+    ///         <group id="9b926680-059a-4a57-8ea8-a1d6c623c760" permission="view"/>
     ///     </permissions>
     /// </api>
     public static string Java()
@@ -130,7 +130,7 @@ public class CsQuery
     ///     <description>Scala Interop sample</description>
     ///     <returns> returns an string</returns>
     ///     <permissions>
-    ///         <group id="$WID$" permission="view"/>
+    ///         <group id="9b926680-059a-4a57-8ea8-a1d6c623c760" permission="view"/>
     ///     </permissions>
     /// </api>
     public static string Scala()

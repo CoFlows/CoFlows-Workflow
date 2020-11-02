@@ -17,7 +17,7 @@ class ScalaQuery {
     ///     <description>Function that returns a name</description>
     ///     <returns>returns an string</returns>
     ///     <permissions>
-    ///         <group id="$WID$" permission="write"/>
+    ///         <group id="9b926680-059a-4a57-8ea8-a1d6c623c760" permission="write"/>
     ///     </permissions>
     /// </api>
     def getName = "something"
@@ -28,7 +28,7 @@ class ScalaQuery {
     ///     <param name="x" type="integer">First number to add</param>
     ///     <param name="y" type="integer">Second number to add</param>
     ///     <permissions>
-    ///         <group id="$WID$" permission="read"/>
+    ///         <group id="9b926680-059a-4a57-8ea8-a1d6c623c760" permission="read"/>
     ///     </permissions>
     /// </api>
     def Add(x:Int, y:Int) = x + y
@@ -37,7 +37,7 @@ class ScalaQuery {
     ///     <description>Function that returns a permission</description>
     ///     <returns> returns an string</returns>
     ///     <permissions>
-    ///         <group id="$WID$" permission="view"/>
+    ///         <group id="9b926680-059a-4a57-8ea8-a1d6c623c760" permission="view"/>
     ///     </permissions>
     /// </api>
     def Permission = {
@@ -58,7 +58,7 @@ class ScalaQuery {
     ///     <description>C# Interop sample</description>
     ///     <returns> returns an string</returns>
     ///     <permissions>
-    ///         <group id="$WID$" permission="view"/>
+    ///         <group id="9b926680-059a-4a57-8ea8-a1d6c623c760" permission="view"/>
     ///     </permissions>
     /// </api>
     def Cs = {
@@ -77,7 +77,7 @@ class ScalaQuery {
     ///     <description>F# Interop sample</description>
     ///     <returns> returns an string</returns>
     ///     <permissions>
-    ///         <group id="$WID$" permission="view"/>
+    ///         <group id="9b926680-059a-4a57-8ea8-a1d6c623c760" permission="view"/>
     ///     </permissions>
     /// </api>
     def Fs = {
@@ -95,7 +95,7 @@ class ScalaQuery {
     ///     <description>Python Interop sample</description>
     ///     <returns> returns an string</returns>
     ///     <permissions>
-    ///         <group id="$WID$" permission="view"/>
+    ///         <group id="9b926680-059a-4a57-8ea8-a1d6c623c760" permission="view"/>
     ///     </permissions>
     /// </api>
     def Python = 

@@ -18,7 +18,7 @@ def getName():
 ###     <param name="x" type="integer">First number to add</param>
 ###     <param name="y" type="integer">Second number to add</param>
 ###     <permissions>
-###         <group id="$WID$" permission="read"/>
+###         <group id="9b926680-059a-4a57-8ea8-a1d6c623c760" permission="read"/>
 ###     </permissions>
 ### </api>
 def Add(x, y):
@@ -29,12 +29,12 @@ def Add(x, y):
 ###     <description>Function that returns a permission</description>
 ###     <returns> returns an string</returns>
 ###     <permissions>
-###         <group id="$WID$" permission="view"/>
+###         <group id="9b926680-059a-4a57-8ea8-a1d6c623c760" permission="view"/>
 ###     </permissions>
 ### </api>
 def Permission():
     quser = qak.User.ContextUser
-    permission = qak.User.PermissionContext("$WID$")
+    permission = qak.User.PermissionContext("9b926680-059a-4a57-8ea8-a1d6c623c760")
     if permission == qak.AccessType.Write:
         return quser.FirstName + " WRITE"
     elif permission == qak.AccessType.Read:
@@ -49,7 +49,7 @@ def Permission():
 ###     <description>C# Interop sample</description>
 ###     <returns> returns an string</returns>
 ###     <permissions>
-###         <group id="$WID$" permission="view"/>
+###         <group id="9b926680-059a-4a57-8ea8-a1d6c623c760" permission="view"/>
 ###     </permissions>
 ### </api>
 def Cs():
@@ -66,7 +66,7 @@ def Cs():
 ###     <description>Java Interop sample</description>
 ###     <returns> returns an string</returns>
 ###     <permissions>
-###         <group id="$WID$" permission="view"/>
+###         <group id="9b926680-059a-4a57-8ea8-a1d6c623c760" permission="view"/>
 ###     </permissions>
 ### </api>
 def Java():
@@ -84,7 +84,7 @@ def Java():
 ###     <description>Scala Interop sample</description>
 ###     <returns> returns an string</returns>
 ###     <permissions>
-###         <group id="$WID$" permission="view"/>
+###         <group id="9b926680-059a-4a57-8ea8-a1d6c623c760" permission="view"/>
 ###     </permissions>
 ### </api>
 def Scala():

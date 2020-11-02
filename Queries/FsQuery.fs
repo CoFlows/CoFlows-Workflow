@@ -17,7 +17,7 @@ module FsQuery
     ///     <description>Function that returns a name</description>
     ///     <returns>returns an string</returns>
     ///     <permissions>
-    ///         <group id="$WID$" permission="write"/>
+    ///         <group id="9b926680-059a-4a57-8ea8-a1d6c623c760" permission="write"/>
     ///     </permissions>
     /// </api>
     let getName = "something"
@@ -28,7 +28,7 @@ module FsQuery
     ///     <param name="x" type="integer">First number to add</param>
     ///     <param name="y" type="integer">Second number to add</param>
     ///     <permissions>
-    ///         <group id="$WID$" permission="read"/>
+    ///         <group id="9b926680-059a-4a57-8ea8-a1d6c623c760" permission="read"/>
     ///     </permissions>
     /// </api>
     let Add x y = x + y
@@ -37,12 +37,12 @@ module FsQuery
     ///     <description>Function that returns a permission</description>
     ///     <returns> returns an string</returns>
     ///     <permissions>
-    ///         <group id="$WID$" permission="view"/>
+    ///         <group id="9b926680-059a-4a57-8ea8-a1d6c623c760" permission="view"/>
     ///     </permissions>
     /// </api>
     let Permission() =
         let user = QuantApp.Kernel.User.ContextUser
-        let permission = QuantApp.Kernel.User.PermissionContext("$WID$")
+        let permission = QuantApp.Kernel.User.PermissionContext("9b926680-059a-4a57-8ea8-a1d6c623c760")
         match permission with
         | QuantApp.Kernel.AccessType.Write -> user.FirstName + " WRITE"
         | QuantApp.Kernel.AccessType.Read -> user.FirstName + " READ"
@@ -53,7 +53,7 @@ module FsQuery
     ///     <description>C# Interop sample</description>
     ///     <returns> returns an string</returns>
     ///     <permissions>
-    ///         <group id="$WID$" permission="view"/>
+    ///         <group id="9b926680-059a-4a57-8ea8-a1d6c623c760" permission="view"/>
     ///     </permissions>
     /// </api>
     let Cs() =
@@ -72,7 +72,7 @@ module FsQuery
     ///     <description>Python Interop sample</description>
     ///     <returns> returns an string</returns>
     ///     <permissions>
-    ///         <group id="$WID$" permission="view"/>
+    ///         <group id="9b926680-059a-4a57-8ea8-a1d6c623c760" permission="view"/>
     ///     </permissions>
     /// </api>
     let Python() =
@@ -92,7 +92,7 @@ module FsQuery
     ///     <description>Scala Interop sample</description>
     ///     <returns> returns an string</returns>
     ///     <permissions>
-    ///         <group id="$WID$" permission="view"/>
+    ///         <group id="9b926680-059a-4a57-8ea8-a1d6c623c760" permission="view"/>
     ///     </permissions>
     /// </api>
     let Scala() =
@@ -110,7 +110,7 @@ module FsQuery
     ///     <description>Java Interop sample</description>
     ///     <returns> returns an string</returns>
     ///     <permissions>
-    ///         <group id="$WID$" permission="view"/>
+    ///         <group id="9b926680-059a-4a57-8ea8-a1d6c623c760" permission="view"/>
     ///     </permissions>
     /// </api>
     let Java() =
