@@ -92,24 +92,24 @@ The pyapi.py looks like this:
 
 where both of these function here are assigned API end-points. In this code there is a variable $WID$ which automatically is set to the ID of the Workflow. This might be as good a time as any to mention groups and permissions in **CoFlows**. 
 
-We can easily add a new API to this Query. Lets assume we want to add the **Subtract** functionality. To do this, simply add the following function to the source file:
+We can easily add a new API to this Query. Lets assume we want to add the **Print** functionality. To do this, simply add the following function to the source file:
 
 
-    ### <api name="Subtract">
-    ###     <description>Function that subtract two numbers</description>
+    import json
+    ### <api name="Print">
+    ###     <description>Function that prints a json</description>
     ###     <returns>returns an integer</returns>
-    ###     <param name="x" type="integer">First number to subtract</param>
-    ###     <param name="y" type="integer">Second number to subtract</param>
+    ###     <param name="x" type="string">JSON object</param>
     ###     <permissions>
-    ###         <group id="$WID$" permission="read"/>
+    ###         <group id="9a7adf48-183f-4d44-8ab2-c0afd1610c71" permission="read"/>
     ###     </permissions>
     ### </api>
-    def Subtract(x, y):
-        return int(x) - int(y)
+    def Print(x):
+        return json.loads(x)
 
 Please the change that the name in the xml meta data 
 
-    <api name="Subtract"> 
+    <api name="Print"> 
 
 is exactly the same as the name of the function. This must be the case for the queries permissions to work.
 
@@ -206,6 +206,14 @@ where **p[0],...,p[n]** represent the parameters of the function / API. A more s
 
 with the header "_cokey: XXX".
 
+## HTTP GET and POST Requests
+**CoFlows** allows both GET and POST calls to the APIs. The previous **Add** example was a GET call so now we will discuss the POST calls. The **Print** function we added above can be called through a POST request since it expects a more complex object. Infact, a serialized version of the JSON object is passed as a string and then deserialized by the function itself. 
+
+All functions that are supposed to be called by POST requests should expect to receive one string variable that the function should deserialize internally. 
+
+An example of calling the **Print** API above is:
+
+    curl -d '{"key":"value"}' -H "Content-Type: application/json" -X POST -g "http://localhost/flow/query/9a7adf48-183f-4d44-8ab2-c0afd1610c71/pyapi.py/Print?_cokey=30be80ea-835b-4524-a43a-21742aae77fa"
 
 ## Secret Keys
 As you may have noticed in the URLs for the API end-points above, there is an extra parameter called the **_cokey**. The **_cokey** parameter is an identification key that allows APIs calls withouth the need to go through the standard login process and aqcuire a JWT token.
@@ -286,16 +294,20 @@ Note that the **_cokey** can be added in the header to increase security. Here i
                 description: ' returns an string'
 
 ## Build
-Although you can add new queries to the Workflow through the CLI commands above, you can also simply add source files to the Queries folders. If you do so, you must build the project in order for the setup files to be correcly updated and take into account the new files.
+Although you can add new queries to the Workflow through the CLI commands above, you can also add source files to the Queries folders. If you do so, you must build the project in order for the setup files to be correcly updated and take into account the new files.
 
 Build the workflow
 
     sh build.sh local
 
-This steps populats the Base, Agents and Queries sections of the **package.json** file. It also pulls all dependencies declared in the nuget, jars and pip sections of the **package.json** entries. Note that F# requires Base files to be ordered according to their dependencies. If a F# base file depends on another F# file please make sure that the the files are ordered accordingly.
+This steps populats the Base, Agents and Queries sections of the **package.json** file. It also pulls all dependencies declared in the nuget, jars and pip sections of the **package.json** entries. Note that F# requires Base files to be ordered according to their dependencies. If a F# base file depends on another F# file, please make sure that the files are ordered accordingly.
 
 ## Notes:
 * If ID in package is empty then build.sh will auto generate an ID
 * build.sh will add new entries to the Files, Queries, Agents and Base sections of the package.json. It will not delete entries, this needs to be done manually.
 * $WID$ is code to populate the Workflow ID in queries and agents. NOTE: Files will be overwritten once with the replacements.
+
+## Next Tutorial
+Please continue on to the [Second Tutorial](tutorial-2.md) to learn about linking third party dependencies like **[pips](https://pypi.org/project/pip/), [nugets](https://www.nuget.org) or [jars](https://maven.apache.org)** with [**CoFlows CE (Community Edition)**](https://github.com/QuantApp/CoFlows-CE). 
+
   
