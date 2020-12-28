@@ -62,3 +62,8 @@ the executes a groupby command and the result is:
     x1      3
     x2      2
     x3      1
+
+## Next Tutorial
+Please continue on to the [Third Tutorial](tutorial-3.md) to learn about **Agents** also known as **daemons** to create scheduled and asynchronouze workflows with [**CoFlows CE (Community Edition)**](https://github.com/QuantApp/CoFlows-CE). 
+
+  

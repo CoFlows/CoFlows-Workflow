@@ -1,15 +1,72 @@
-# Tutorial 1 - Simple APIs
+# Tutorial 2 - APIs with third-party dependencies
 
-[**CoFlows CE (Community Edition)**](https://github.com/QuantApp/CoFlows-CE) is a polyglot runtime that simplifies the development, hosting and deployment of powerful data-centric workflows. **CoFlows** enables developers to create rich **Web-APIs** with almost **zero boiler plate** and scheduled / reactive processes through a range of languages including CoreCLR (C#, F# and VB), JVM (Java and Scala), Python and Javascript. Furthermore, functions written in any of these languages can call each other within the same process with **full interop**.
+This tutorial builds on the [first tutorial](tutorial-1.md) and explains how to create an API that depends on libraries like **[pips](https://pypi.org/project/pip/), [nugets](https://www.nuget.org) or [jars](https://maven.apache.org)** with [**CoFlows CE (Community Edition)**](https://github.com/QuantApp/CoFlows-CE). 
 
-This tutorial explains how to create a simple API with [**CoFlows CE (Community Edition)**](https://github.com/QuantApp/CoFlows-CE). We will cover the topics of:
-* Queries / APIs
-* Groups and Permissions
-* Secret Keys
-* HTTP Requests
-* Open API Schema
+Through the terminal, enter into the **bin** folder if you are using linux/macos or alternative enter the **bin/bat** folder if you are using windows.
 
-to gain a general overview of the CoFlows environment.
+
+## Add dependencies
+To add a dependency you can run the following commands:
+    
+    linux/macos:    
+    sh add.sh pip { name of pip }
+    sh add.sh jar { url of jar }
+    sh add.sh nuget { name of nuget } { version of nuget }
+
+    windows:
+    add.bat pip { name of pip }
+    add.bat jar { url of jar }
+    add.bat nuget { name of nuget } { version of nuget }
+
+As an example, we will build on the previous Python example and add an API that executes operations on a Panda DataFrame. Start with:
+
+    sh add.sh pip pandas
+
+then insert the function to the previous query **pyapi.py** 
+
+    import pandas as pd
+    ### <api name="Panda">
+    ###     <description>Function that uses a dataframe's group by</description>
+    ###     <returns>returns an string</returns>
+    ###     <param name="x" type="string">List of x values</param>
+    ###     <param name="y" type="string">List of y values</param>
+    ###     <permissions>
+    ###         <group id="9a7adf48-183f-4d44-8ab2-c0afd1610c71" permission="read"/>
+    ###     </permissions>
+    ### </api>
+    def Panda(x, y):
+        xlist = list(x.split(','))
+        ylist = list(y.split(','))
+
+        df = pd.DataFrame(list(zip(xlist, ylist)), columns =['X', 'Y']).groupby(['X']).count().rename(columns={ 'Y': 'count' })
+
+        return df.to_string()
+
+This API can be called this through the following command:
+
+    curl -g "http://localhost/flow/query/9a7adf48-183f-4d44-8ab2-c0afd1610c71/pyapi.py/Panda?p[0]=x1,x2,x1,x3,x1,x2&p[1]=y1,y2,y3,y4,y5,y6&_cokey=30be80ea-835b-4524-a43a-21742aae77fa"
+
+The function takes the variables to creates the following DataFrame internally:
+
+        X   Y
+    0  x1  y1
+    1  x2  y2
+    2  x1  y3
+    3  x3  y4
+    4  x1  y5
+    5  x2  y6
+
+the executes a groupby command and the result is:
+
+        count
+    X        
+    x1      3
+    x2      2
+    x3      1
+
+
+
+
 
 First you must install a [**git**](https://git-scm.com/downloads/guis/) client and [docker](https://www.docker.com/get-started) support for linux containers.
 
@@ -71,7 +128,7 @@ The pyapi.py looks like this:
     ###     </permissions>
     ### </api>
     def Add(x, y):
-        return int(x) + int(y)
+        return x + y
 
 
     ### <api name="Permission">
@@ -94,27 +151,6 @@ The pyapi.py looks like this:
             return quser.FirstName + " DENIED"
 
 where both of these function here are assigned API end-points. In this code there is a variable $WID$ which automatically is set to the ID of the Workflow. This might be as good a time as any to mention groups and permissions in **CoFlows**. 
-
-We can easily add a new API to this Query. Lets assume we want to add the **Print** functionality. To do this, simply add the following function to the source file:
-
-
-    import json
-    ### <api name="Print">
-    ###     <description>Function that prints a json</description>
-    ###     <returns>returns an integer</returns>
-    ###     <param name="x" type="string">JSON object</param>
-    ###     <permissions>
-    ###         <group id="9a7adf48-183f-4d44-8ab2-c0afd1610c71" permission="read"/>
-    ###     </permissions>
-    ### </api>
-    def Print(x):
-        return json.loads(x)
-
-Please the change that the name in the xml meta data 
-
-    <api name="Print"> 
-
-is exactly the same as the name of the function. This must be the case for the queries permissions to work.
 
 ### Permissions
 Each Workflow has a unique **ID** which is visible in the **package.json** folder. The **package.json** file fully declares the Workflow and it's dependencies. Please note that the Workflows **ID** is automatically set by **CoFlows** if the ID entry is empty in the **package.json** file. 
@@ -140,9 +176,6 @@ There are four different permission levels:
 * Write (2)
 
 The numbers linked to each permission define the permission's value and in the example above, the minimum permission a user must have in the $WID$ group is **Read**. If a user is not part of the group, the user has no access. If the user has the **View** permission, the user has no access because **View** < **Read**. If the user has the **Read** or **Write** permission, then the user has access and is allowed to call the API.
-
-
-## Execute
 
 Now that we have an understanding of these principles, lets run the code by typing:
 
@@ -179,9 +212,7 @@ now click on the **pyapi.py** link in the page below:
 to see the source code view of the query:
 ![](../images/CoFlows_query_source.png)
 
-**Please not that changing the code in this UI WILL change the code in your local file and vice versa!**
-
-Finally you will be able to run the query to see the values of all apis / functions that take no paramteres. In the this case it is only the **Permission** API since **Add** requires to parameters:
+finally you will be able to run the query to see the values of all apis / functions that take no paramteres. In the this case it is only the **Permission** API since **Add** requires to parameters:
 ![](../images/CoFlows_query_run.png)
 
 The end-points to these APIs are now visible and are for the **Permission** API:
@@ -209,14 +240,6 @@ where **p[0],...,p[n]** represent the parameters of the function / API. A more s
 
 with the header "_cokey: XXX".
 
-## HTTP GET and POST Requests
-**CoFlows** allows both GET and POST calls to the APIs. The previous **Add** example was a GET call so now we will discuss the POST calls. The **Print** function we added above can be called through a POST request since it expects a more complex object. Infact, a serialized version of the JSON object is passed as a string and then deserialized by the function itself. 
-
-All functions that are supposed to be called by POST requests should expect to receive one string variable that the function should deserialize internally. 
-
-An example of calling the **Print** API above is:
-
-    curl -d '{"key":"value"}' -H "Content-Type: application/json" -X POST -g "http://localhost/flow/query/9a7adf48-183f-4d44-8ab2-c0afd1610c71/pyapi.py/Print?_cokey=30be80ea-835b-4524-a43a-21742aae77fa"
 
 ## Secret Keys
 As you may have noticed in the URLs for the API end-points above, there is an extra parameter called the **_cokey**. The **_cokey** parameter is an identification key that allows APIs calls withouth the need to go through the standard login process and aqcuire a JWT token.
@@ -228,89 +251,74 @@ and then select profile:
 
 The secret key should be kept secret as it offers access to the system through the related user. This key can also be re-generated by click on the yellow button above.
 
-## Open API Schema
-All queries in **CoFlows** can generate Open API Schemas defined by the meta tags of the APIs / functions in the query.
-
-The url to see this schema is:
-
-    http://localhost/flow/openapi/{{$WID$}}/{{Query}}?_cokey=XXX
-
-and in the example above we specifically had
-
-    http://localhost/flow/openapi/9a7adf48-183f-4d44-8ab2-c0afd1610c71/pyapi.py?_cokey=30be80ea-835b-4524-a43a-21742aae77fa
-
-Note that the **_cokey** can be added in the header to increase security. Here is a sample schema:
-
-        openapi: 3.0.0
-        info:
-        title: Python Query Test API
-        description: Python Query API with samples for permissions, documentation and function definitions
-        version: 1.0.100
-        termsOfService: https://www.coflo.ws
-        license:
-            name: Apache 2.0
-            url: https://www.apache.org/licenses/LICENSE-2.0.html
-        contact:
-            name: Arturo Rodriguez
-            url: https://www.coflo.ws
-            email: arturo@coflo.ws
-        servers:
-        - url: http://localhost/flow/query/9a7adf48-183f-4d44-8ab2-c0afd1610c71/pyapi.py
-        paths:
-        /Add:
-            get:
-            description: Function that adds two numbers
-            parameters:
-            - name: x
-                in: query
-                required: true
-                description: First number to add
-                schema:
-                type: integer
-            - name: y
-                in: query
-                required: true
-                description: Second number to add
-                schema:
-                type: integer
-            - name: _cokey
-                in: query
-                required: false
-                description: CoFlows User Key. This value can also be set in the Header
-                schema:
-                type: string
-            responses:
-                200:
-                description: returns an integer
-        /Permission:
-            get:
-            description: Function that returns a permission
-            parameters:
-            - name: _cokey
-                in: query
-                required: false
-                description: CoFlows User Key. This value can also be set in the Header
-                schema:
-                type: string
-            responses:
-                200:
-                description: ' returns an string'
 
 ## Build
-Although you can add new queries to the Workflow through the CLI commands above, you can also add source files to the Queries folders. If you do so, you must build the project in order for the setup files to be correcly updated and take into account the new files.
-
 Build the workflow
 
     sh build.sh local
 
-This steps populats the Base, Agents and Queries sections of the **package.json** file. It also pulls all dependencies declared in the nuget, jars and pip sections of the **package.json** entries. Note that F# requires Base files to be ordered according to their dependencies. If a F# base file depends on another F# file, please make sure that the files are ordered accordingly.
+This steps populats the Base, Agents and Queries sections of the **package.json** file. It also pulls all dependencies declared in the nuget, jars and pip sections of the **package.json** entries. Note that F# requires Base files to be ordered according to their dependencies. If a F# base files depends on another F# file please make sure that the the files are ordered accordingly.
+
+## Execute
+Run the server in local mode
+
+    sh server.sh localhost.json
 
 ## Notes:
 * If ID in package is empty then build.sh will auto generate an ID
 * build.sh will add new entries to the Files, Queries, Agents and Base sections of the package.json. It will not delete entries, this needs to be done manually.
 * $WID$ is code to populate the Workflow ID in queries and agents. NOTE: Files will be overwritten once with the replacements.
-
-## Next Tutorial
-Please continue on to the [Second Tutorial](tutorial-2.md) to learn about linking third party dependencies like **[pips](https://pypi.org/project/pip/), [nugets](https://www.nuget.org) or [jars](https://maven.apache.org)** with [**CoFlows CE (Community Edition)**](https://github.com/QuantApp/CoFlows-CE). 
-
+* Java Agents require GSON and JSON jars
   
+
+## Dash App
+Add new App
+
+## Agents
+Add new Agents
+
+    sh add.sh agent (cs, fs, py, java, scala, js, vb)
+
+Startup scripts
+
+
+
+Folder
+
+    📦/
+    ┣ 📂Files
+    ┃ ┗ 📜my.azureauth
+    ┣ 📂bin
+    ┃ ┣ 📂bat
+    ┃ ┃ ┣ 📜aci_deploy.bat
+    ┃ ┃ ┣ 📜aci_remove.bat
+    ┃ ┃ ┣ 📜add.bat
+    ┃ ┃ ┣ 📜build.bat
+    ┃ ┃ ┣ 📜cloud_deploy.bat
+    ┃ ┃ ┣ 📜cloud_log.bat
+    ┃ ┃ ┣ 📜cloud_remove.bat
+    ┃ ┃ ┣ 📜cloud_restart.bat
+    ┃ ┃ ┣ 📜query.bat
+    ┃ ┃ ┗ 📜server.bat
+    ┃ ┣ 📜aci_deploy.sh
+    ┃ ┣ 📜aci_remove.sh
+    ┃ ┣ 📜add.sh
+    ┃ ┣ 📜build.sh
+    ┃ ┣ 📜cloud_deploy.sh
+    ┃ ┣ 📜cloud_log.sh
+    ┃ ┣ 📜cloud_remove.sh
+    ┃ ┣ 📜cloud_restart.sh
+    ┃ ┣ 📜query.sh
+    ┃ ┣ 📜query_custom.sh
+    ┃ ┗ 📜server.sh
+    ┣ 📂jars
+    ┃ ┗ 📜.gitignore
+    ┣ 📂nugets
+    ┃ ┗ 📜.gitignore
+    ┣ 📂pip
+    ┃ ┗ 📜.gitignore
+    ┣ 📜LICENSE
+    ┣ 📜README.md
+    ┣ 📜coflows_config.json
+    ┣ 📜localhost.json
+    ┗ 📜package.json
